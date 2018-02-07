@@ -15,7 +15,8 @@ table {
 }
 
 .dissapear {
-  opacity: 0;
+  display: none;
+
 }
 
 section {
@@ -29,4 +30,26 @@ section {
 
 .hidden {
   display: none;
+}
+
+.right {
+  float: right;
+}
+
+form {
+  margin-top: 1.5em;
+}
+
+p {
+  display: inline;
+}
+
+.p2score {
+  float: right;
+  margin-right: 2em;
+}
+
+.p1score {
+  margin-top: 1em;
+  /* why does this work??? */
 }

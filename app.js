@@ -8,8 +8,9 @@ $(document).ready(function() {
 
     success: function(json) {
       console.log(json);
-      $("section").removeClass("hidden");
-      $("section").html(json[0].question);
+      $("section")
+        .removeClass("hidden")
+        .html(json[0].question);
       $("table").addClass("dissapear");
     },
     error: function() {
