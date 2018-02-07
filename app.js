@@ -2,7 +2,8 @@ $(document).ready(function() {
   console.log("jQuery is linked");
 
 var userAnswer;
-var correctAnswer;
+var correctAnswer;;
+var answerWorth
 
 //Put API function in a variable
   var assignRandomQuestion = function() {($.ajax({
@@ -17,6 +18,7 @@ var correctAnswer;
       $("table").addClass("dissapear");
 
       correctAnswer = json[0].answer;
+      answerWorth = json[0].value;
 },
       // $setTimeout(function(){
       // can't get this to work
@@ -38,16 +40,12 @@ $("td").on('click', function() {
 });
 
 //If the submitted answer === json.answer, add 100 to <p>player score</p>
-
-  // $(".inputText").on('submit', function() {
-  //   userAnswer = $(".inputText").attr("value")
-  // });
-
   $("form").on('submit', function(e) {
   e.preventDefault();
   userAnswer = $(".inputText").val();
   if (userAnswer === correctAnswer) {
   console.log(userAnswer + " is correct!");
+  $("p").html("Player Score: " + answerWorth);
 } else {
    console.log(userAnswer + " is WRONG!");
  }});
