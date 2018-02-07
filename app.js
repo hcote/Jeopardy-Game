@@ -19,15 +19,7 @@ var correctAnswer;
       userAnswer = $(".inputText").val();
       correctAnswer = json[0].answer;
 
-      function checkAnswer() {
-        $("input").on('submit', function(e) {
-        e.preventDefault();
-        console.log(correctAnswer);
-        if (userAnswer == correctAnswer) {
-        console.log(correctAnswer);
-      } else {
-         console.log(correctAnswer);
-       }})};
+
 
 },
       // $setTimeout(function(){
@@ -51,7 +43,14 @@ $("td").on('click', function() {
 });
 
 //If the submitted answer === json.answer, add 100 to <p>player score</p>
-
+  $("form").on('submit', function(e) {
+  e.preventDefault();
+  console.log(correctAnswer);
+  if (userAnswer == correctAnswer) {
+  console.log(correctAnswer);
+} else {
+   console.log(correctAnswer);
+ }});
 
 
 
