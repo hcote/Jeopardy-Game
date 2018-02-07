@@ -1,6 +1,9 @@
 $(document).ready(function() {
   console.log("jQuery is linked");
 
+var userAnswer;
+var correctAnswer;
+
 //Put API function in a variable
   var assignRandomQuestion = function() {($.ajax({
     method: "GET",
@@ -12,11 +15,34 @@ $(document).ready(function() {
         .removeClass("hidden")
         .html(json[0].question);
       $("table").addClass("dissapear");
-    },
+
+      userAnswer = $(".inputText").val();
+      correctAnswer = json[0].answer;
+
+      function checkAnswer() {
+        $("input").on('submit', function(e) {
+        e.preventDefault();
+        console.log(correctAnswer);
+        if (userAnswer == correctAnswer) {
+        console.log(correctAnswer);
+      } else {
+         console.log(correctAnswer);
+       }})};
+
+},
+      // $setTimeout(function(){
+      // can't get this to work
+      // })
+
+//make the submit buttons disabled after 10 seconds
+//include a timer
+
+
     error: function() {
       console.log("Error!");
     }
   }))};
+
 
 //Assigns random question to each table box
 $("td").on('click', function() {
@@ -24,11 +50,21 @@ $("td").on('click', function() {
   //$(this.clicked).addClass("dissapear"); --NOT WORKING
 });
 
+//If the submitted answer === json.answer, add 100 to <p>player score</p>
+
+
+
+
+
+
+
 //Make the number dissapear after question is clicked
-$("section").on('click', function() {
+  $("section").on('click', function() {
   $("table").removeClass("dissapear");
   $("section").addClass("hidden");
 });
+
+
 
 //End of document.ready
 });
