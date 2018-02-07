@@ -16,11 +16,7 @@ var correctAnswer;
         .html(json[0].question);
       $("table").addClass("dissapear");
 
-      userAnswer = $(".inputText").val();
       correctAnswer = json[0].answer;
-
-
-
 },
       // $setTimeout(function(){
       // can't get this to work
@@ -29,9 +25,8 @@ var correctAnswer;
 //make the submit buttons disabled after 10 seconds
 //include a timer
 
-
     error: function() {
-      console.log("Error!");
+      console.log("Error. Could not receive json data.");
     }
   }))};
 
@@ -43,17 +38,19 @@ $("td").on('click', function() {
 });
 
 //If the submitted answer === json.answer, add 100 to <p>player score</p>
+
+  // $(".inputText").on('submit', function() {
+  //   userAnswer = $(".inputText").attr("value")
+  // });
+
   $("form").on('submit', function(e) {
   e.preventDefault();
-  console.log(correctAnswer);
-  if (userAnswer == correctAnswer) {
-  console.log(correctAnswer);
+  userAnswer = $(".inputText").val();
+  if (userAnswer === correctAnswer) {
+  console.log(userAnswer + " is correct!");
 } else {
-   console.log(correctAnswer);
+   console.log(userAnswer + " is WRONG!");
  }});
-
-
-
 
 
 
