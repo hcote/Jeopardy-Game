@@ -1,7 +1,8 @@
 $(document).ready(function() {
   console.log("jQuery is linked");
 
-var userAnswer;
+var userOneAnswer;
+var userTwoAnswer;
 var correctAnswer;;
 var answerWorth
 
@@ -29,13 +30,16 @@ var answerWorth
 //Assigns random question to each table box
 $("td").on('click', function() {
   assignRandomQuestion();
-
+  $(".inputText1").removeAttr("disabled");
+  $(".inputText2").removeAttr("disabled");
 //FYI -- STILL IN The FUNCTION ABOVE
+//Reference: https://www.w3schools.com/jsref/met_win_settimeout.asp
 //After 10 second timer ends. Go back to the board after click on the question
   setTimeout(function(){
     console.log("timer done");
     $("table").removeClass("dissapear");
     $("section").addClass("hidden");
+    //$(".inputText").Attr("disabled"); LEFT OFF HERE
   }, 10000);
 });
 
@@ -43,14 +47,27 @@ $("td").on('click', function() {
 //If the submitted answer = json.answer, add value to player score
   $("form").on('submit', function(e) {
   e.preventDefault();
-  userAnswer = $(".inputText").val();
-  if (userAnswer === correctAnswer) {
-  console.log(userAnswer + " is correct!");
+});
+
+  $("#userOneForm").on('submit', function() {
+  userOneAnswer = $(".inputText1").val();
+  if (userOneAnswer === correctAnswer) {
+  console.log(userOneAnswer + " is correct!");
   $("#playerOneScore").html(answerWorth);
 } else {
-   console.log(userAnswer + " is wrong! - " + answerWorth);
+   console.log(userOneAnswer + " is wrong! - " + answerWorth);
    $("#playerOneScore").html(-answerWorth);
  }});
+
+ $("#userTwoForm").on('submit', function() {
+ userTwoAnswer = $(".inputText2").val();
+ if (userTwoAnswer === correctAnswer) {
+ console.log(userTwoAnswer + " is correct!");
+ $("#playerTwoScore").html(answerWorth);
+} else {
+  console.log(userTwoAnswer + " is wrong! - " + answerWorth);
+  $("#playerTwoScore").html(-answerWorth);
+}});
 
 
 //End of document.ready

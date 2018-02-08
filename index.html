@@ -56,11 +56,21 @@
                     <td id="box55">$500</td>
               </tr>
         </table>
-
-        <form class="user1Input" action="index.html" method="post">
-              <input type="text" name="answer" class="inputText" value="">
+        <div class="flexbox">
+        <div>
+          <form id="userOneForm" action="index.html" method="post">
+              <input type="text" name="answer" class="inputText1" value="" disabled>
               <input type="submit" name="submit" value="Submit">
-        </form>
-        <p class="p1score">Player 1 Score: <span id="playerOneScore">0</span></p>
+            </form>
+            <p class="p1score">Player 1 Score: <span id="playerOneScore">0</span></p>
+</div>
+<div class="playerTwoBox">
+            <form id="userTwoForm" action="index.html" method="post">
+              <input type="text" name="answer" class="inputText2" value="" disabled>
+              <input type="submit" name="submit" value="Submit">
+            </form>
+            <p class="p2score">Player 2 Score: <span id="playerTwoScore">0</span></p>
+        </div>
+      </div>
   </body>
 </html>

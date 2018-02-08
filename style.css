@@ -43,3 +43,12 @@ form {
 p {
   margin-top: 1em;
 }
+
+.flexbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.playerTwoBox {
+  margin-left: 60%;
+}
