@@ -40,13 +40,15 @@ $("td").on('click', function() {
     $("table").removeClass("dissapear");
     $("section").addClass("hidden");
     //$(".inputText").Attr("disabled"); LEFT OFF HERE
-  }, 10000);
+  }, 20000);
 });
 
 
 //If the submitted answer = json.answer, add value to player score
   $("form").on('submit', function(e) {
   e.preventDefault();
+  $("table").removeClass("dissapear");
+  $("section").addClass("hidden");
 });
 
   $("#userOneForm").on('submit', function() {
@@ -54,9 +56,14 @@ $("td").on('click', function() {
   if (userOneAnswer === correctAnswer) {
   console.log(userOneAnswer + " is correct!");
   $("#playerOneScore").html(answerWorth);
+  alert("User One Wins!");
+  $('.inputText1').val('');
+  $('.inputText2').val('');
+  // $("form").val(''); NEED TO DISABLE OTHER PLAYERS SUBMIT BUTTON AND CLEAR BOTH INPUT TEXT BOXES UPON CORRECT ASNWER SUBMISSION
 } else {
    console.log(userOneAnswer + " is wrong! - " + answerWorth);
    $("#playerOneScore").html(-answerWorth);
+   $('.inputText1').val('');
  }});
 
  $("#userTwoForm").on('submit', function() {
@@ -64,10 +71,15 @@ $("td").on('click', function() {
  if (userTwoAnswer === correctAnswer) {
  console.log(userTwoAnswer + " is correct!");
  $("#playerTwoScore").html(answerWorth);
+ alert("User Two Wins!");
+ $('.inputText1').val('');
+ $('.inputText2').val('');
 } else {
   console.log(userTwoAnswer + " is wrong! - " + answerWorth);
   $("#playerTwoScore").html(-answerWorth);
+  $('.inputText2').val('');
 }});
+
 
 
 //End of document.ready
