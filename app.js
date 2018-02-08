@@ -12,6 +12,11 @@ var answerWorth
     url: "http://www.jservice.io/api/random",
 
     success: function(json) {
+      if ($('correctAnswer').not(':contains(" ")')) {
+        console.log("single word answer");
+      } else {
+        console.log("has a space");
+      };
       console.log(json);
       $("section")
         .removeClass("hidden")
@@ -32,8 +37,8 @@ $("td").on('click', function() {
   assignRandomQuestion();
   $(".inputText1").removeAttr("disabled");
   $(".inputText2").removeAttr("disabled");
+  $(".submit").removeAttr("disabled");
 //FYI -- STILL IN The FUNCTION ABOVE
-//Reference: https://www.w3schools.com/jsref/met_win_settimeout.asp
 //After 10 second timer ends. Go back to the board after click on the question
   setTimeout(function(){
     console.log("timer done");
