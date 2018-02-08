@@ -19,49 +19,46 @@ var answerWorth
 
       correctAnswer = json[0].answer;
       answerWorth = json[0].value;
-},
-      // $setTimeout(function(){
-      // can't get this to work
-      // })
-
-//make the submit buttons disabled after 10 seconds
-//include a timer
+    },
 
     error: function() {
       console.log("Error. Could not receive json data.");
     }
   }))};
 
-
 //Assigns random question to each table box
 $("td").on('click', function() {
   assignRandomQuestion();
-  //$(this.clicked).addClass("dissapear"); --NOT WORKING
+
+//FYI -- STILL IN The FUNCTION ABOVE
+//After 10 second timer ends. Go back to the board after click on the question
+  setTimeout(function(){
+    console.log("timer done");
+    $("table").removeClass("dissapear");
+    $("section").addClass("hidden");
+  }, 10000);
 });
 
-//If the submitted answer === json.answer, add 100 to <p>player score</p>
+
+//If the submitted answer = json.answer, add value to player score
   $("form").on('submit', function(e) {
   e.preventDefault();
   userAnswer = $(".inputText").val();
   if (userAnswer === correctAnswer) {
   console.log(userAnswer + " is correct!");
-  $("p").html("Player Score: " + answerWorth);
+  $("#playerOneScore").html(answerWorth);
 } else {
-   console.log(userAnswer + " is WRONG!");
+   console.log(userAnswer + " is wrong! - " + answerWorth);
+   $("#playerOneScore").html(-answerWorth);
  }});
-
-
-
-//Make the number dissapear after question is clicked
-  $("section").on('click', function() {
-  $("table").removeClass("dissapear");
-  $("section").addClass("hidden");
-});
-
 
 
 //End of document.ready
 });
+
+
+
+
 
 
 //Challenges
@@ -72,3 +69,5 @@ $("td").on('click', function() {
 // Disable submit boxes after after 15 seconds
 // Reload back to board after 10 seconds (read question for 10 seconds, have additional 5 seconds to submit answer)
 // Make a login (players choose username?)
+// Capture user answer input
+// Store user score from one round to the next

@@ -41,15 +41,5 @@ form {
 }
 
 p {
-  display: inline;
-}
-
-.p2score {
-  float: right;
-  margin-right: 2em;
-}
-
-.p1score {
   margin-top: 1em;
-  /* why does this work??? */
 }
