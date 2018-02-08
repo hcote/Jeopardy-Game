@@ -31,9 +31,14 @@ var answerWorth
     },
 
     error: function() {
-      console.log("Error. Could not receive json data.");
+      console.log("Error. JSON service is temporarily.");
     }
   }))};
+
+
+
+
+
 
 //Assigns random question to each table box
 $("td").on('click', function() {
@@ -41,6 +46,8 @@ $("td").on('click', function() {
   $(".inputText1").removeAttr("disabled");
   $(".inputText2").removeAttr("disabled");
   $(".submit").removeAttr("disabled");
+
+
 //FYI -- STILL IN The FUNCTION ABOVE
 //After 10 second timer ends. Go back to the board after click on the question
   setTimeout(function(){
@@ -52,12 +59,13 @@ $("td").on('click', function() {
     $(".inputText2").prop("disabled", "true");
     $('.inputText1').val('');
     $('.inputText2').val('');
+    // $("#box11").html(''); the td clicked last will have html be empty
     if (userOneAnswer === correctAnswer || userTwoAnswer === correctAnswer) {
 
     } else {
       responsiveVoice.speak("No answers submitted, the correct answer is " + correctAnswer.toString());
     };
-  }, 12000);
+  }, 1000);
 });
 
   window.localStorage.setItem("#playerOneScore", "answerWorth");
@@ -113,7 +121,12 @@ $("td").on('click', function() {
   };
 }});
 
-
+//Remove box text after being clicked
+$(".box").each(function(index){
+  $(this).on('click', function(index) {
+    $(this).html('');
+  });
+})
 
 //End of document.ready
 });
@@ -121,8 +134,9 @@ $("td").on('click', function() {
 
 
 
-//Challenges
-//Make the number dissapear after question is clicked
+// Challenges
+// Make the number dissapear after question is clicked
+// Make only one word answers
 // Make it audible for each question J
 // Make a point system J
 // Make it able for two players to play J
@@ -131,4 +145,7 @@ $("td").on('click', function() {
 // Make a login (players choose username?)
 // Capture user answer input J
 // Store user score from one round to the next
-// Animations
+// Animations for question popup & leave
+// Add player station-like styling to the player boxes
+// Add frame around board to look better
+// Disable timer voice if an answer was submitted
