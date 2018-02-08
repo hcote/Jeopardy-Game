@@ -1,7 +1,7 @@
 $(document).ready(function() {
   console.log("jQuery is linked");
 
-  responsiveVoice.speak("Hello, WDI 43. Welcome to Jeopardy");
+// responsiveVoice.speak("Hello, WDI 43. Welcome to Jeopardy");
 
 var userOneAnswer;
 var userTwoAnswer;
@@ -21,6 +21,7 @@ var answerWorth
           .removeClass("hidden")
           .html(json[0].question);
         $("table").addClass("dissapear");
+
         responsiveVoice.speak(json[0].question.toString());
         correctAnswer = json[0].answer.toLowerCase();
         answerWorth = json[0].value;
@@ -51,7 +52,12 @@ $("td").on('click', function() {
     $(".inputText2").prop("disabled", "true");
     $('.inputText1').val('');
     $('.inputText2').val('');
-  }, 10000);
+    if (userOneAnswer === correctAnswer || userTwoAnswer === correctAnswer) {
+
+    } else {
+      responsiveVoice.speak("No answers submitted, the correct answer is " + correctAnswer.toString());
+    };
+  }, 12000);
 });
 
   window.localStorage.setItem("#playerOneScore", "answerWorth");
@@ -69,16 +75,21 @@ $("td").on('click', function() {
   if (userOneAnswer === correctAnswer) {
   console.log(userOneAnswer + " is correct!");
   $("#playerOneScore").html(answerWorth);
-  alert("User One Wins!");
   $('.inputText1').val('');
   $('.inputText2').val('');
   $(".submit").prop("disabled", "true");
+  responsiveVoice.speak("Great job player one, you got the correct answer");
   // $("form").val(''); NEED TO DISABLE OTHER PLAYERS SUBMIT BUTTON AND CLEAR BOTH INPUT TEXT BOXES UPON CORRECT ASNWER SUBMISSION
 } else {
    console.log(userOneAnswer + " is wrong! - " + answerWorth);
    $("#playerOneScore").html(-answerWorth);
    $('.inputText1').val('');
    $(".submit").prop("disabled", "true");
+   if (userOneAnswer === correctAnswer || userTwoAnswer === correctAnswer) {
+
+   } else {
+     responsiveVoice.speak("You are wrong, the answer is " + correctAnswer.toString());
+   };
  }});
 
  $("#userTwoForm").on('submit', function() {
@@ -86,15 +97,20 @@ $("td").on('click', function() {
  if (userTwoAnswer === correctAnswer) {
  console.log(userTwoAnswer + " is correct!");
  $("#playerTwoScore").html(answerWorth);
- alert("User Two Wins!");
  $('.inputText1').val('');
  $('.inputText2').val('');
  $(".submit").prop("disabled", "true");
+ responsiveVoice.speak("Great job player two, you got the correct answer");
 } else {
   console.log(userTwoAnswer + " is wrong! - " + answerWorth);
   $("#playerTwoScore").html(-answerWorth);
   $('.inputText2').val('');
   $(".submit").prop("disabled", "true");
+  if (userOneAnswer === correctAnswer || userTwoAnswer === correctAnswer) {
+
+  } else {
+    responsiveVoice.speak("You are wrong, the answer is " + correctAnswer.toString());
+  };
 }});
 
 
@@ -107,7 +123,7 @@ $("td").on('click', function() {
 
 //Challenges
 //Make the number dissapear after question is clicked
-// Make it audible for each question
+// Make it audible for each question J
 // Make a point system J
 // Make it able for two players to play J
 // Disable submit boxes after after 10 seconds J
@@ -115,3 +131,4 @@ $("td").on('click', function() {
 // Make a login (players choose username?)
 // Capture user answer input J
 // Store user score from one round to the next
+// Animations

@@ -1,13 +1,27 @@
 body {
   margin: 2em;
+  font-family: helvetica;
 }
 
 td, th {
   background-color: blue;
   margin: 1px;
-  color: yellow;
+
   text-align: center;
-  padding: 2.5em;
+  padding: .75em 0em;
+
+}
+
+td {
+  font-size: 3em;
+  font-weight: 800;
+  color: #ffff4d;
+}
+
+th {
+    font-size: 1.25em;
+    font-weight: 500;
+    color: #FFF;
 }
 
 table {
@@ -21,11 +35,12 @@ table {
 
 section {
   background-color: blue;
-  color: yellow;
+  color: #FFF;
   font-size: 3em;
   padding: 3em;
   text-align: center;
-  letter-spacing: .05em;
+  letter-spacing: .03em;
+  font-family: "Cormorant Garamond";
 }
 
 .hidden {
