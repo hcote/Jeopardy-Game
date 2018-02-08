@@ -1,6 +1,8 @@
 $(document).ready(function() {
   console.log("jQuery is linked");
 
+  responsiveVoice.speak("Hello, WDI 43. Welcome to Jeopardy");
+
 var userOneAnswer;
 var userTwoAnswer;
 var correctAnswer;;
@@ -19,7 +21,7 @@ var answerWorth
           .removeClass("hidden")
           .html(json[0].question);
         $("table").addClass("dissapear");
-
+        responsiveVoice.speak(json[0].question.toString());
         correctAnswer = json[0].answer.toLowerCase();
         answerWorth = json[0].value;
       // } else {
@@ -108,7 +110,7 @@ $("td").on('click', function() {
 // Make it audible for each question
 // Make a point system J
 // Make it able for two players to play J
-// Disable submit boxes after after 10 seconds
+// Disable submit boxes after after 10 seconds J
 // Reload back to board after 10 seconds J
 // Make a login (players choose username?)
 // Capture user answer input J
