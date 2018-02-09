@@ -13,9 +13,77 @@ var userOneAnswer;
 var userTwoAnswer;
 var correctAnswer;
 var answerWorth;
-var timerValue = 75000;
+var timerValue = 10000;
 
-//Put API function in a variable
+var randomCategories = [];
+
+//Randomize Category For Each Column
+$("button").on('click', function getCategory() {($.ajax({
+  method: "GET",
+  url: "http://www.jservice.io/api/random",
+
+  success: function(json) {
+    randomCategories.push(json[0].category.title);
+    console.log(randomCategories);
+    $(".CategoryOne").html(randomCategories[0]);
+  },
+  error: function() {
+    console.log("Category not assigned");
+  }
+}))});
+$("button").on('click', function getCategory() {($.ajax({
+  method: "GET",
+  url: "http://www.jservice.io/api/random",
+
+  success: function(json) {
+    randomCategories.push(json[0].category.title);
+    console.log(randomCategories);
+    $(".CategoryTwo").html(randomCategories[1]);
+  },
+  error: function() {
+    console.log("Category not assigned");
+  }
+}))});
+$("button").on('click', function getCategory() {($.ajax({
+  method: "GET",
+  url: "http://www.jservice.io/api/random",
+
+  success: function(json) {
+    randomCategories.push(json[0].category.title);
+    console.log(randomCategories);
+    $(".CategoryThree").html(randomCategories[2]);
+  },
+  error: function() {
+    console.log("Category not assigned");
+  }
+}))});
+$("button").on('click', function getCategory() {($.ajax({
+  method: "GET",
+  url: "http://www.jservice.io/api/random",
+
+  success: function(json) {
+    randomCategories.push(json[0].category.title);
+    console.log(randomCategories);
+    $(".CategoryFour").html(randomCategories[3]);
+  },
+  error: function() {
+    console.log("Category not assigned");
+  }
+}))});
+$("button").on('click', function getCategory() {($.ajax({
+  method: "GET",
+  url: "http://www.jservice.io/api/random",
+
+  success: function(json) {
+    randomCategories.push(json[0].category.title);
+    console.log(randomCategories);
+    $(".CategoryFive").html(randomCategories[4]);
+  },
+  error: function() {
+    console.log("Category not assigned");
+  }
+}))});
+
 //If clicked .box.html($100) == true {retrieve json.value = 100}, etc.
 //Could go crazy and do a random generator button to generate the categories, then returned json question will only choose a question from the category column that was clicked
 function assignRandomQuestion() {($.ajax({
@@ -43,6 +111,7 @@ function enablePlayerSubmits() {
   $(".inputText1").removeAttr("disabled");
   $(".inputText2").removeAttr("disabled");
   $(".submit").removeAttr("disabled");
+  $(".submit").addClass("submitGreen");
 };
 function disablePlayerSubmits() {
   $(".submit").prop("disabled", "true");
@@ -56,6 +125,7 @@ function disablePlayersTextbox() {
 function backToBoard() {
   $("table").removeClass("dissapear");
   $("section").addClass("hidden");
+  $(".submit").removeClass("submitGreen");
 };
 
 //Clear any text in users textbox
@@ -78,11 +148,11 @@ function setTimer() {
   disablePlayerSubmits();
   disablePlayersTextbox();
   resetBothUsersTextbox();
-  if (userOneAnswer === correctAnswer || userTwoAnswer === correctAnswer) {
-      return;
-  } else {
-    responsiveVoice.speak("No answers submitted, the correct answer is " + correctAnswer.toString());
-  };
+  // if ($(".submit").clicked != false) {
+  //     return;
+  // } else {
+  //   responsiveVoice.speak("No answers submitted, the correct answer is " + correctAnswer.toString());
+  // };
 }, timerValue)};
 
 //Assigns random question to each table box
@@ -153,6 +223,7 @@ function removeUsedBox(){
    $(".box").each(function(index){
    $(this).on('click', function(index) {
    $(this).html('');
+   $(this).addClass('answeredBox');
   })
 })};
 removeUsedBox();
