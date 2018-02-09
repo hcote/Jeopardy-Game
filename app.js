@@ -4,9 +4,9 @@ console.log("jQuery is linked");
 
 // Setting usernames
 // var userOneName = prompt("Player one, please enter your username");
-// $("#playerOneName").html(userOneName + "'s");
+// $("#playerOneName").html(userOneName);
 // var userTwoName = prompt("Player two, please enter your username");
-// $("#playerTwoName").html(userTwoName + "'s");
+// $("#playerTwoName").html(userTwoName);
 // responsiveVoice.speak("Hello" + userOneName + " and " + userTwoName + ". Welcome to Jeopardy");
 
 var userOneAnswer;
@@ -180,3 +180,4 @@ removeUsedBox();
 //presentation: tell everyone why uou picked what you picked; what you learned (readme.md); challenges were css
 //Feedback - make the voice less frequent
 //Math.random to choose if the number is above .9 it gives daily double
+//Loading bar above contestant textbox to show how much time remaining
