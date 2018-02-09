@@ -1,13 +1,19 @@
 $(document).ready(function() {
-  console.log("jQuery is linked");
 
-// responsiveVoice.speak("Hello, WDI 43. Welcome to Jeopardy");
+console.log("jQuery is linked");
+
+//Setting usernames
+// var userOneName = prompt("Player one, please enter your username");
+// $("#playerOneName").html(userOneName + "'s");
+// var userTwoName = prompt("Player two, please enter your username");
+// $("#playerTwoName").html(userTwoName + "'s");
+// //responsiveVoice.speak("Hello WDI 43. Welcome to Jeopardy");
 
 var userOneAnswer;
 var userTwoAnswer;
 var correctAnswer;
 var answerWorth;
-var timerValue = 10000;
+var timerValue = 15000;
 
 //Put API function in a variable
 function assignRandomQuestion() {($.ajax({
@@ -20,6 +26,7 @@ function assignRandomQuestion() {($.ajax({
           .removeClass("hidden")
           .html(json[0].question)
         $("table").addClass("dissapear");
+        responsiveVoice.speak("Category: " + json[0].category.title.toString());
         responsiveVoice.speak(json[0].question.toString());
         correctAnswer = json[0].answer.toLowerCase();
         answerWorth = json[0].value;
@@ -29,13 +36,12 @@ function assignRandomQuestion() {($.ajax({
     }
   }))};
 
-//Enable players to enter and submit answers
+//Enable/disable players to enter and submit answers
 function enablePlayerSubmits() {
   $(".inputText1").removeAttr("disabled");
   $(".inputText2").removeAttr("disabled");
   $(".submit").removeAttr("disabled");
 };
-
 function disablePlayerSubmits() {
   $(".submit").prop("disabled", "true");
 };
@@ -46,6 +52,7 @@ function backToBoard() {
   $("section").addClass("hidden");
 };
 
+//10 seconds to answer question before time expires
 function setTimer() {
   setTimeout(function(){
   backToBoard();
@@ -61,14 +68,13 @@ function setTimer() {
   };
 }, timerValue)};
 
+//Clear any text in users textbox
 function resetUserOneTextbox() {
    $('.inputText1').val('');
 };
-
 function resetUserTwoTextbox() {
    $('.inputText2').val('');
 };
-
 function resetBothUsersTextbox() {
   $('.inputText1').val('');
   $('.inputText2').val('');
@@ -117,16 +123,14 @@ $("#userOneForm").on('submit', function() {
      responsiveVoice.speak("You are wrong, the answer is " + correctAnswer.toString());
    };
  }});
-
- $("#userTwoForm").on('submit', function() {
+$("#userTwoForm").on('submit', function() {
  userTwoAnswer = $(".inputText2").val().toLowerCase();
  if (userTwoAnswer === correctAnswer) {
  $("#playerTwoScore").html(answerWorth);
- resetUserOneTextbox();
- resetUserTwoTextbox();
+ resetBothUsersTextbox();
  disablePlayerSubmits();
  responsiveVoice.speak("Great job player two, you got the correct answer");
-} else {
+ } else {
   $("#playerTwoScore").html(-answerWorth);
   resetUserTwoTextbox();
   disablePlayerSubmits();;
@@ -137,12 +141,14 @@ $("#userOneForm").on('submit', function() {
   };
 }});
 
-//Remove box text after being clicked
+//Remove board $dollar value after box clicked
+function removeUsedBox(){
    $(".box").each(function(index){
    $(this).on('click', function(index) {
    $(this).html('');
   })
-});
+})};
+removeUsedBox();
 
 //End of document.ready
 });

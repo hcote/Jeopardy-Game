@@ -1,12 +1,13 @@
 body {
-  margin: 2em;
+  margin: 2.5em 6em;
   font-family: helvetica;
 }
 
 td, th {
   background-color: blue;
   margin: 1px;
-
+  width: 175px;
+  height: 60px;
   text-align: center;
   padding: .75em 0em;
 
@@ -25,7 +26,6 @@ th {
 }
 
 table {
-  width: 100%;
   background-color: #000;
 }
 
@@ -46,6 +46,10 @@ section {
 
 .hidden {
   display: none;
+}
+
+.boxClicked {
+  background-color: blue;
 }
 
 .right {
