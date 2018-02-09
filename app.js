@@ -2,20 +2,22 @@ $(document).ready(function() {
 
 console.log("jQuery is linked");
 
-//Setting usernames
+// Setting usernames
 // var userOneName = prompt("Player one, please enter your username");
 // $("#playerOneName").html(userOneName + "'s");
 // var userTwoName = prompt("Player two, please enter your username");
 // $("#playerTwoName").html(userTwoName + "'s");
-// //responsiveVoice.speak("Hello WDI 43. Welcome to Jeopardy");
+// responsiveVoice.speak("Hello" + userOneName + " and " + userTwoName + ". Welcome to Jeopardy");
 
 var userOneAnswer;
 var userTwoAnswer;
 var correctAnswer;
 var answerWorth;
-var timerValue = 15000;
+var timerValue = 75000;
 
 //Put API function in a variable
+//If clicked .box.html($100) == true {retrieve json.value = 100}, etc.
+//Could go crazy and do a random generator button to generate the categories, then returned json question will only choose a question from the category column that was clicked
 function assignRandomQuestion() {($.ajax({
     method: "GET",
     url: "http://www.jservice.io/api/random",
@@ -45,28 +47,16 @@ function enablePlayerSubmits() {
 function disablePlayerSubmits() {
   $(".submit").prop("disabled", "true");
 };
+function disablePlayersTextbox() {
+  $(".inputText1").prop("disabled", "true");
+  $(".inputText2").prop("disabled", "true");
+}
 
 //Hides question, sets board back to visible
 function backToBoard() {
   $("table").removeClass("dissapear");
   $("section").addClass("hidden");
 };
-
-//10 seconds to answer question before time expires
-function setTimer() {
-  setTimeout(function(){
-  backToBoard();
-  $(".submit").prop("disabled", "true");
-  $(".inputText1").prop("disabled", "true");
-  $(".inputText2").prop("disabled", "true");
-  $('.inputText1').val('');
-  $('.inputText2').val('');
-  if (userOneAnswer === correctAnswer || userTwoAnswer === correctAnswer) {
-      return;
-  } else {
-    responsiveVoice.speak("No answers submitted, the correct answer is " + correctAnswer.toString());
-  };
-}, timerValue)};
 
 //Clear any text in users textbox
 function resetUserOneTextbox() {
@@ -79,6 +69,21 @@ function resetBothUsersTextbox() {
   $('.inputText1').val('');
   $('.inputText2').val('');
 };
+
+//10 seconds to answer question before time expires
+// "|| $(".submit").data('clicked') != false" would not work
+function setTimer() {
+  setTimeout(function(){
+  backToBoard();
+  disablePlayerSubmits();
+  disablePlayersTextbox();
+  resetBothUsersTextbox();
+  if (userOneAnswer === correctAnswer || userTwoAnswer === correctAnswer) {
+      return;
+  } else {
+    responsiveVoice.speak("No answers submitted, the correct answer is " + correctAnswer.toString());
+  };
+}, timerValue)};
 
 //Assigns random question to each table box
 //Enables player submit button & text field
@@ -95,6 +100,7 @@ $("td").on('click', function() {
 $("form").on('submit', function(e) {
   e.preventDefault();
   backToBoard();
+  disablePlayersTextbox();
 });
 
 //When user one hits Submit:
@@ -123,6 +129,7 @@ $("#userOneForm").on('submit', function() {
      responsiveVoice.speak("You are wrong, the answer is " + correctAnswer.toString());
    };
  }});
+//Exact same code logic as above, just for user two
 $("#userTwoForm").on('submit', function() {
  userTwoAnswer = $(".inputText2").val().toLowerCase();
  if (userTwoAnswer === correctAnswer) {
@@ -141,7 +148,7 @@ $("#userTwoForm").on('submit', function() {
   };
 }});
 
-//Remove board $dollar value after box clicked
+//Remove $dollar value on game board after the box is clicked
 function removeUsedBox(){
    $(".box").each(function(index){
    $(this).on('click', function(index) {
@@ -153,8 +160,7 @@ removeUsedBox();
 //End of document.ready
 });
 
-
-// Challenges
+// To Do //
 // Make the number dissapear after question is clicked J
 // Make only one word answers (can't figure out - Kay said regEx)
 // Make it audible for each question J
@@ -162,10 +168,15 @@ removeUsedBox();
 // Make it able for two players to play J
 // Disable submit boxes after after 10 seconds J
 // Reload back to board after 10 seconds J
-// Make a login (players choose username?)
+// Make a login (players choose username) J
 // Capture user answer input J
-// Store user score from one round to the next
-// Animations for question popup & leave
-// Add player station-like styling to the player boxes
-// Add frame around board to look better
+// Store user score from one round to the next (local storage?)
+// Animations for question popup & leave (couldn't figure out without breaking a bunch of stuff)
+// Add styling to the player boxes and board to look better; add header to show game
 // Disable timer voice if an answer was submitted
+//Update readme.md file !!!
+//Winning logic
+//Alert if try to squeeze the window too small
+//presentation: tell everyone why uou picked what you picked; what you learned (readme.md); challenges were css
+//Feedback - make the voice less frequent
+//Math.random to choose if the number is above .9 it gives daily double

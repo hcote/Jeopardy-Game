@@ -5,12 +5,16 @@
             <title>Jeopardy</title>
             <link rel="stylesheet" href="style.css">
             <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
             <script src="jquery.js" charset="utf-8"></script>
             <script src="jquery-3.3.1.min.js" charset="utf-8"></script>
             <script src="app.js" charset="utf-8"></script>
             <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
       </head>
   <body>
+        <header>
+
+        </header>
         <section class="hidden"></section>
         <table>
               <tr id="tableHead">
@@ -58,20 +62,22 @@
         </table>
 
         <div class="flexbox">
-              <div>
+              <div class="scoreBox">
+                    <div class="playerScore">Score: <span id="playerOneScore">0</span></div>
                     <form id="userOneForm" action="index.html" method="post">
                           <input type="text" name="answer" class="inputText1" value="" autocomplete="off" disabled>
                           <input class="submit" type="submit" name="submit" value="Submit" disabled>
                     </form>
-                    <p class="p1score"><span id="playerOneName">Player 1</span> Score: <span id="playerOneScore">0</span></p>
+                    <div class="playerNameDiv"><span id="playerOneName">Player 1</span></div>
               </div>
 
-              <div class="playerTwoBox">
+              <div class="scoreBox">
+                    <div class="playerScore">Score: <span id="playerTwoScore">0</span></div>
                     <form id="userTwoForm" action="index.html" method="post">
                           <input type="text" name="answer" class="inputText2" value="" autocomplete="off" disabled>
                           <input class="submit" type="submit" name="submit" value="Submit" disabled>
                     </form>
-                    <p class="p2score"><span id="playerTwoName">Player 2</span> Score: <span id="playerTwoScore">0</span></p>
+                    <div class="playerNameDiv"><span id="playerTwoName">Player 2</span></div>
               </div>
         </div>
   </body>
@@ -85,3 +91,4 @@
 <!-- https://stackoverflow.com/questions/13606573/disable-button-after-submit-with-jquery -->
 <!-- https://responsivevoice.org/api/ -->
 <!-- https://stackoverflow.com/questions/18966222/jquery-each-and-attaching-click-event -->
+<!-- https://stackoverflow.com/questions/6629297/how-to-do-if-clicked-else/6629427 -->
