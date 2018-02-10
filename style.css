@@ -167,5 +167,11 @@ h4 {
   opacity: .9;
 }
 
+button {
+  height: 4em;
+  margin-top: 8em;
+  float: right;
+}
+
 /* delete unneccessary classes and IDs
 clean up this - as little code as possible; as easy to understand as possible */

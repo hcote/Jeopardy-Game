@@ -26,6 +26,7 @@ $("button").on('click', function getCategory() {($.ajax({
     randomCategories.push(json[0].category.title);
     console.log(randomCategories);
     $(".CategoryOne").html(randomCategories[0]);
+    //ADD JSON.CATEGORY.ID TO ALL COLUMN ONE BOXES
   },
   error: function() {
     console.log("Category not assigned");
@@ -84,9 +85,25 @@ $("button").on('click', function getCategory() {($.ajax({
   }
 }))});
 
+//FAKE AJAX REQUEST - IS THIS WHAT I SHOULD DO?????
+$("button").on('click', function getCategory() {($.ajax({
+  method: "GET",
+  url: "http://www.jservice.io/api/category?id="+//categoryID,
+
+  success: function(json) {
+    randomCategories.push(json[0].category.title);
+    console.log(randomCategories);
+    $(".CategoryOne").html(randomCategories[0]);
+    //ADD JSON.CATEGORY.ID TO ALL COLUMN ONE BOXES
+  },
+  error: function() {
+    console.log("Category not assigned");
+  }
+}))});
+
 //If clicked .box.html($100) == true {retrieve json.value = 100}, etc.
 //Could go crazy and do a random generator button to generate the categories, then returned json question will only choose a question from the category column that was clicked
-function assignRandomQuestion() {($.ajax({
+function assignQuestion() {($.ajax({
     method: "GET",
     url: "http://www.jservice.io/api/random",
 
@@ -161,7 +178,7 @@ function setTimer() {
 //If user puts correct answer, end function
 //If neither user submits answer, voice responds with correct answer
 $("td").on('click', function() {
-  assignRandomQuestion();
+  assignQuestion();
   enablePlayerSubmits();
   setTimer();
 });
