@@ -88,13 +88,8 @@ $("button").on('click', function() {($.ajax({
   }
 }))});
 
-// var catIdOne = categoryIds[0];
-// var catIdTwo = categoryIds[1];
-// var catIdThree = categoryIds[2];
-// var catIdFour = categoryIds[3];
-// var catIdFive = categoryIds[4];
-
-function assignOneQuestion() {($.ajax({
+//Assigns the columns questions to the randomnly assigned column header
+function columnOne200Question() {($.ajax({
     method: "GET",
     url: "http://www.jservice.io/api/category?id="+categoryIds[0],
 
@@ -113,7 +108,84 @@ function assignOneQuestion() {($.ajax({
       console.log("Error. JSON service is temporarily unavailable.");
     }
   }))};
-function assignTwoQuestion() {($.ajax({
+function columnOne400Question() {($.ajax({
+      method: "GET",
+      url: "http://www.jservice.io/api/category?id="+categoryIds[0],
+
+      success: function(json) {
+          console.log(json);
+          $("section")
+            .removeClass("hidden")
+            .html(json.clues[1].question)
+          $("table").addClass("dissapear");
+          responsiveVoice.speak(json.clues[1].question.toString());
+          correctAnswer = json.clues[1].answer.toLowerCase();
+          answerWorth = json.clues[1].value;
+          console.log(categoryIds);
+      },
+      error: function() {
+        console.log("Error. JSON service is temporarily unavailable.");
+      }
+    }))};
+function columnOne600Question() {($.ajax({
+          method: "GET",
+          url: "http://www.jservice.io/api/category?id="+categoryIds[0],
+
+          success: function(json) {
+              console.log(json);
+              $("section")
+                .removeClass("hidden")
+                .html(json.clues[2].question)
+              $("table").addClass("dissapear");
+              responsiveVoice.speak(json.clues[2].question.toString());
+              correctAnswer = json.clues[2].answer.toLowerCase();
+              answerWorth = json.clues[2].value;
+              console.log(categoryIds);
+          },
+          error: function() {
+            console.log("Error. JSON service is temporarily unavailable.");
+          }
+        }))};
+function columnOne800Question() {($.ajax({
+                  method: "GET",
+                  url: "http://www.jservice.io/api/category?id="+categoryIds[0],
+
+                  success: function(json) {
+                      console.log(json);
+                      $("section")
+                        .removeClass("hidden")
+                        .html(json.clues[3].question)
+                      $("table").addClass("dissapear");
+                      responsiveVoice.speak(json.clues[3].question.toString());
+                      correctAnswer = json.clues[3].answer.toLowerCase();
+                      answerWorth = json.clues[3].value;
+                      console.log(categoryIds);
+                  },
+                  error: function() {
+                    console.log("Error. JSON service is temporarily unavailable.");
+                  }
+                }))};
+function columnOne1000Question() {($.ajax({
+                          method: "GET",
+                          url: "http://www.jservice.io/api/category?id="+categoryIds[0],
+
+                          success: function(json) {
+                              console.log(json);
+                              $("section")
+                                .removeClass("hidden")
+                                .html(json.clues[4].question)
+                              $("table").addClass("dissapear");
+                              responsiveVoice.speak(json.clues[4].question.toString());
+                              correctAnswer = json.clues[4].answer.toLowerCase();
+                              answerWorth = json.clues[4].value;
+                              console.log(categoryIds);
+                          },
+                          error: function() {
+                            console.log("Error. JSON service is temporarily unavailable.");
+                          }
+                        }))};
+
+function columnTwo200Question() {($.ajax({
       method: "GET",
       url: "http://www.jservice.io/api/category?id="+categoryIds[1],
 
@@ -132,26 +204,180 @@ function assignTwoQuestion() {($.ajax({
         console.log("Error. JSON service is temporarily unavailable.");
       }
     }))};
-function assignThreeQuestion() {($.ajax({
+function columnTwo400Question() {($.ajax({
           method: "GET",
-          url: "http://www.jservice.io/api/category?id="+categoryIds[2],
+          url: "http://www.jservice.io/api/category?id="+categoryIds[1],
 
           success: function(json) {
               console.log(json);
               $("section")
                 .removeClass("hidden")
-                .html(json.clues[0].question)
+                .html(json.clues[1].question)
               $("table").addClass("dissapear");
-              responsiveVoice.speak(json.clues[0].question.toString());
-              correctAnswer = json.clues[0].answer.toLowerCase();
-              answerWorth = json.clues[0].value;
+              responsiveVoice.speak(json.clues[1].question.toString());
+              correctAnswer = json.clues[1].answer.toLowerCase();
+              answerWorth = json.clues[1].value;
               console.log(categoryIds);
           },
           error: function() {
             console.log("Error. JSON service is temporarily unavailable.");
           }
         }))};
-function assignFourQuestion() {($.ajax({
+function columnTwo600Question() {($.ajax({
+              method: "GET",
+              url: "http://www.jservice.io/api/category?id="+categoryIds[1],
+
+              success: function(json) {
+                  console.log(json);
+                  $("section")
+                    .removeClass("hidden")
+                    .html(json.clues[2].question)
+                  $("table").addClass("dissapear");
+                  responsiveVoice.speak(json.clues[2].question.toString());
+                  correctAnswer = json.clues[2].answer.toLowerCase();
+                  answerWorth = json.clues[2].value;
+                  console.log(categoryIds);
+              },
+              error: function() {
+                console.log("Error. JSON service is temporarily unavailable.");
+              }
+            }))};
+function columnTwo800Question() {($.ajax({
+                          method: "GET",
+                          url: "http://www.jservice.io/api/category?id="+categoryIds[1],
+
+                          success: function(json) {
+                              console.log(json);
+                              $("section")
+                                .removeClass("hidden")
+                                .html(json.clues[3].question)
+                              $("table").addClass("dissapear");
+                              responsiveVoice.speak(json.clues[3].question.toString());
+                              correctAnswer = json.clues[3].answer.toLowerCase();
+                              answerWorth = json.clues[3].value;
+                              console.log(categoryIds);
+                          },
+                          error: function() {
+                            console.log("Error. JSON service is temporarily unavailable.");
+                          }
+                        }))};
+function columnTwo1000Question() {($.ajax({
+          method: "GET",
+          url: "http://www.jservice.io/api/category?id="+categoryIds[1],
+
+          success: function(json) {
+              console.log(json);
+              $("section")
+                .removeClass("hidden")
+                .html(json.clues[4].question)
+              $("table").addClass("dissapear");
+              responsiveVoice.speak(json.clues[4].question.toString());
+              correctAnswer = json.clues[4].answer.toLowerCase();
+              answerWorth = json.clues[4].value;
+              console.log(categoryIds);
+          },
+          error: function() {
+            console.log("Error. JSON service is temporarily unavailable.");
+          }
+        }))};
+
+function columnThree200Question() {($.ajax({
+              method: "GET",
+              url: "http://www.jservice.io/api/category?id="+categoryIds[2],
+
+              success: function(json) {
+                  console.log(json);
+                  $("section")
+                    .removeClass("hidden")
+                    .html(json.clues[0].question)
+                  $("table").addClass("dissapear");
+                  responsiveVoice.speak(json.clues[0].question.toString());
+                  correctAnswer = json.clues[0].answer.toLowerCase();
+                  answerWorth = json.clues[0].value;
+                  console.log(categoryIds);
+              },
+              error: function() {
+                console.log("Error. JSON service is temporarily unavailable.");
+              }
+            }))};
+function columnThree400Question() {($.ajax({
+                  method: "GET",
+                  url: "http://www.jservice.io/api/category?id="+categoryIds[2],
+
+                  success: function(json) {
+                      console.log(json);
+                      $("section")
+                        .removeClass("hidden")
+                        .html(json.clues[1].question)
+                      $("table").addClass("dissapear");
+                      responsiveVoice.speak(json.clues[1].question.toString());
+                      correctAnswer = json.clues[1].answer.toLowerCase();
+                      answerWorth = json.clues[1].value;
+                      console.log(categoryIds);
+                  },
+                  error: function() {
+                    console.log("Error. JSON service is temporarily unavailable.");
+                  }
+                }))};
+function columnThree600Question() {($.ajax({
+                      method: "GET",
+                      url: "http://www.jservice.io/api/category?id="+categoryIds[2],
+
+                      success: function(json) {
+                          console.log(json);
+                          $("section")
+                            .removeClass("hidden")
+                            .html(json.clues[2].question)
+                          $("table").addClass("dissapear");
+                          responsiveVoice.speak(json.clues[2].question.toString());
+                          correctAnswer = json.clues[2].answer.toLowerCase();
+                          answerWorth = json.clues[2].value;
+                          console.log(categoryIds);
+                      },
+                      error: function() {
+                        console.log("Error. JSON service is temporarily unavailable.");
+                      }
+                    }))};
+function columnThree800Question() {($.ajax({
+                                  method: "GET",
+                                  url: "http://www.jservice.io/api/category?id="+categoryIds[2],
+
+                                  success: function(json) {
+                                      console.log(json);
+                                      $("section")
+                                        .removeClass("hidden")
+                                        .html(json.clues[3].question)
+                                      $("table").addClass("dissapear");
+                                      responsiveVoice.speak(json.clues[3].question.toString());
+                                      correctAnswer = json.clues[3].answer.toLowerCase();
+                                      answerWorth = json.clues[3].value;
+                                      console.log(categoryIds);
+                                  },
+                                  error: function() {
+                                    console.log("Error. JSON service is temporarily unavailable.");
+                                  }
+                                }))};
+function columnThree1000Question() {($.ajax({
+                  method: "GET",
+                  url: "http://www.jservice.io/api/category?id="+categoryIds[2],
+
+                  success: function(json) {
+                      console.log(json);
+                      $("section")
+                        .removeClass("hidden")
+                        .html(json.clues[4].question)
+                      $("table").addClass("dissapear");
+                      responsiveVoice.speak(json.clues[4].question.toString());
+                      correctAnswer = json.clues[4].answer.toLowerCase();
+                      answerWorth = json.clues[4].value;
+                      console.log(categoryIds);
+                  },
+                  error: function() {
+                    console.log("Error. JSON service is temporarily unavailable.");
+                  }
+                }))};
+
+function columnFour200Question() {($.ajax({
               method: "GET",
               url: "http://www.jservice.io/api/category?id="+categoryIds[3],
 
@@ -170,25 +396,179 @@ function assignFourQuestion() {($.ajax({
                 console.log("Error. JSON service is temporarily unavailable.");
               }
             }))};
-function assignFiveQuestion() {($.ajax({
-          method: "GET",
-          url: "http://www.jservice.io/api/category?id="+categoryIds[4],
+function columnFour400Question() {($.ajax({
+    method: "GET",
+    url: "http://www.jservice.io/api/category?id="+categoryIds[3],
 
-          success: function(json) {
-              console.log(json);
-              $("section")
-                .removeClass("hidden")
-                .html(json.clues[0].question)
-              $("table").addClass("dissapear");
-              responsiveVoice.speak(json.clues[0].question.toString());
-              correctAnswer = json.clues[0].answer.toLowerCase();
-              answerWorth = json.clues[0].value;
-              console.log(categoryIds);
-          },
-          error: function() {
-            console.log("Error. JSON service is temporarily unavailable.");
-          }
-        }))};
+    success: function(json) {
+        console.log(json);
+        $("section")
+          .removeClass("hidden")
+          .html(json.clues[1].question)
+        $("table").addClass("dissapear");
+        responsiveVoice.speak(json.clues[1].question.toString());
+        correctAnswer = json.clues[1].answer.toLowerCase();
+        answerWorth = json.clues[1].value;
+        console.log(categoryIds);
+    },
+    error: function() {
+      console.log("Error. JSON service is temporarily unavailable.");
+    }
+  }))};
+function columnFour600Question() {($.ajax({
+        method: "GET",
+        url: "http://www.jservice.io/api/category?id="+categoryIds[3],
+
+        success: function(json) {
+            console.log(json);
+            $("section")
+              .removeClass("hidden")
+              .html(json.clues[2].question)
+            $("table").addClass("dissapear");
+            responsiveVoice.speak(json.clues[2].question.toString());
+            correctAnswer = json.clues[2].answer.toLowerCase();
+            answerWorth = json.clues[2].value;
+            console.log(categoryIds);
+        },
+        error: function() {
+          console.log("Error. JSON service is temporarily unavailable.");
+        }
+      }))};
+function columnFour800Question() {($.ajax({
+                    method: "GET",
+                    url: "http://www.jservice.io/api/category?id="+categoryIds[3],
+
+                    success: function(json) {
+                        console.log(json);
+                        $("section")
+                          .removeClass("hidden")
+                          .html(json.clues[3].question)
+                        $("table").addClass("dissapear");
+                        responsiveVoice.speak(json.clues[3].question.toString());
+                        correctAnswer = json.clues[3].answer.toLowerCase();
+                        answerWorth = json.clues[3].value;
+                        console.log(categoryIds);
+                    },
+                    error: function() {
+                      console.log("Error. JSON service is temporarily unavailable.");
+                    }
+                  }))};
+function columnFour1000Question() {($.ajax({
+                  method: "GET",
+                  url: "http://www.jservice.io/api/category?id="+categoryIds[3],
+
+                success: function(json) {
+                    console.log(json);
+                    $("section")
+                      .removeClass("hidden")
+                      .html(json.clues[4].question)
+                    $("table").addClass("dissapear");
+                    responsiveVoice.speak(json.clues[4].question.toString());
+                    correctAnswer = json.clues[4].answer.toLowerCase();
+                    answerWorth = json.clues[4].value;
+                    console.log(categoryIds);
+                },
+                error: function() {
+                  console.log("Error. JSON service is temporarily unavailable.");
+                }
+              }))};
+
+function columnFive200Question() {($.ajax({
+    method: "GET",
+    url: "http://www.jservice.io/api/category?id="+categoryIds[4],
+
+    success: function(json) {
+        console.log(json);
+        $("section")
+          .removeClass("hidden")
+          .html(json.clues[0].question)
+        $("table").addClass("dissapear");
+        responsiveVoice.speak(json.clues[0].question.toString());
+        correctAnswer = json.clues[0].answer.toLowerCase();
+        answerWorth = json.clues[0].value;
+        console.log(categoryIds);
+    },
+    error: function() {
+      console.log("Error. JSON service is temporarily unavailable.");
+    }
+  }))};
+function columnFive400Question() {($.ajax({
+      method: "GET",
+      url: "http://www.jservice.io/api/category?id="+categoryIds[4],
+
+      success: function(json) {
+          console.log(json);
+          $("section")
+            .removeClass("hidden")
+            .html(json.clues[1].question)
+          $("table").addClass("dissapear");
+          responsiveVoice.speak(json.clues[1].question.toString());
+          correctAnswer = json.clues[1].answer.toLowerCase();
+          answerWorth = json.clues[1].value;
+          console.log(categoryIds);
+      },
+      error: function() {
+        console.log("Error. JSON service is temporarily unavailable.");
+      }
+    }))};
+function columnFive600Question() {($.ajax({
+      method: "GET",
+      url: "http://www.jservice.io/api/category?id="+categoryIds[4],
+
+      success: function(json) {
+        console.log(json);
+        $("section")
+        .removeClass("hidden")
+        .html(json.clues[2].question)
+        $("table").addClass("dissapear");
+        responsiveVoice.speak(json.clues[2].question.toString());
+        correctAnswer = json.clues[2].answer.toLowerCase();
+        answerWorth = json.clues[2].value;
+        console.log(categoryIds);
+      },
+      error: function() {
+        console.log("Error. JSON service is temporarily unavailable.");
+      }
+    }))};
+function columnFive800Question() {($.ajax({
+        method: "GET",
+        url: "http://www.jservice.io/api/category?id="+categoryIds[4],
+
+        success: function(json) {
+            console.log(json);
+            $("section")
+              .removeClass("hidden")
+              .html(json.clues[3].question)
+            $("table").addClass("dissapear");
+            responsiveVoice.speak(json.clues[3].question.toString());
+            correctAnswer = json.clues[3].answer.toLowerCase();
+            answerWorth = json.clues[3].value;
+            console.log(categoryIds);
+        },
+        error: function() {
+          console.log("Error. JSON service is temporarily unavailable.");
+        }
+      }))};
+function columnFive1000Question() {($.ajax({
+      method: "GET",
+      url: "http://www.jservice.io/api/category?id="+categoryIds[4],
+
+      success: function(json) {
+          console.log(json);
+          $("section")
+            .removeClass("hidden")
+            .html(json.clues[4].question)
+          $("table").addClass("dissapear");
+          responsiveVoice.speak(json.clues[4].question.toString());
+          correctAnswer = json.clues[4].answer.toLowerCase();
+          answerWorth = json.clues[4].value;
+          console.log(categoryIds);
+      },
+      error: function() {
+        console.log("Error. JSON service is temporarily unavailable.");
+      }
+    }))};
+
 //Enable/disable players to enter and submit answers
 function enablePlayerSubmits() {
   $(".inputText1").removeAttr("disabled");
@@ -243,28 +623,132 @@ function setTimer() {
 //Timer logic (after 10 seconds: hide question, show board, disable users submit buttons, reset textbox)
 //If user puts correct answer, end function
 //If neither user submits answer, voice responds with correct answer
-$(".column1").on('click', function() {
-  assignOneQuestion();
+$(".columnone200").on('click', function() {
+  columnOne200Question();
   enablePlayerSubmits();
   setTimer();
 });
-$(".column2").on('click', function() {
-  assignTwoQuestion();
+$(".columnone400").on('click', function() {
+  columnOne400Question();
   enablePlayerSubmits();
   setTimer();
 });
-$(".column3").on('click', function() {
-  assignThreeQuestion();
+$(".columnone600").on('click', function() {
+  columnOne600Question();
   enablePlayerSubmits();
   setTimer();
 });
-$(".column4").on('click', function() {
-  assignFourQuestion();
+$(".columnone800").on('click', function() {
+  columnOne800Question();
   enablePlayerSubmits();
   setTimer();
 });
-$(".column5").on('click', function() {
-  assignFiveQuestion();
+$(".columnone1000").on('click', function() {
+  columnOne1000Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+
+$(".columntwo200").on('click', function() {
+  columnTwo200Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columntwo400").on('click', function() {
+  columnTwo400Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columntwo600").on('click', function() {
+  columnTwo600Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columntwo800").on('click', function() {
+  columnTwo800Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columntwo1000").on('click', function() {
+  columnTwo1000Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+
+$(".columnthree200").on('click', function() {
+  columnThree200Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnthree400").on('click', function() {
+  columnThree400Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnthree600").on('click', function() {
+  columnThree600Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnthree800").on('click', function() {
+  columnThree800Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnthree1000").on('click', function() {
+  columnThree1000Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+
+$(".columnfour200").on('click', function() {
+  columnFour200Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnfour400").on('click', function() {
+  columnFour400Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnfour600").on('click', function() {
+  columnFour600Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnfour800").on('click', function() {
+  columnFour800Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnfour1000").on('click', function() {
+  columnFour1000Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+
+$(".columnfive200").on('click', function() {
+  columnFive200Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnfive400").on('click', function() {
+  columnFive400Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnfive600").on('click', function() {
+  columnFive600Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnfive800").on('click', function() {
+  columnFive800Question();
+  enablePlayerSubmits();
+  setTimer();
+});
+$(".columnfive1000").on('click', function() {
+  columnFive1000Question();
   enablePlayerSubmits();
   setTimer();
 });
