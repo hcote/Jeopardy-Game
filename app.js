@@ -13,7 +13,7 @@ var userOneAnswer;
 var userTwoAnswer;
 var correctAnswer;
 var answerWorth;
-var timerValue = 10000;
+var timerValue = 100000;
 
 var randomCategories = [];
 var categoryIds = [];
@@ -611,11 +611,12 @@ function setTimer() {
   disablePlayerSubmits();
   disablePlayersTextbox();
   resetBothUsersTextbox();
+  console.log("timer done");
   // if ($(".submit").clicked != false) {
   //     return;
   // } else {
   //   responsiveVoice.speak("No answers submitted, the correct answer is " + correctAnswer.toString());
-  // };
+  // }; need to get it so that the timer function ends if submit button pressed
 }, timerValue)};
 
 //Assigns random question to each table box
@@ -771,37 +772,39 @@ $("form").on('submit', function(e) {
 //Voice responds "you are wrong, etc."
 $("#userOneForm").on('submit', function() {
   userOneAnswer = $(".inputText1").val().toLowerCase();
+  var currentScore = parseInt($("#playerOneScore").html());
+  var newScore = parseInt(-answerWorth);
   if (userOneAnswer === correctAnswer) {
-  $("#playerOneScore").html(answerWorth);
+  $("#playerOneScore").html(currentScore + answerWorth);
   resetBothUsersTextbox();
   disablePlayerSubmits();
-  responsiveVoice.speak("Great job player one, you got the correct answer");
   } else {
-   $("#playerOneScore").html(-answerWorth);
+  $("#playerOneScore").html(currentScore + newScore);
    resetUserOneTextbox();
    disablePlayerSubmits();
    if (userOneAnswer === correctAnswer || userTwoAnswer === correctAnswer) {
 
    } else {
-     responsiveVoice.speak("You are wrong, the answer is " + correctAnswer.toString());
+     // responsiveVoice.speak("The correct answer is " + correctAnswer.toString());
    };
  }});
 //Exact same code logic as above, just for user two
 $("#userTwoForm").on('submit', function() {
  userTwoAnswer = $(".inputText2").val().toLowerCase();
+ var currentScore = parseInt($("#playerTwoScore").html());
+ var newScore = parseInt(-answerWorth);
  if (userTwoAnswer === correctAnswer) {
- $("#playerTwoScore").html(answerWorth);
+ $("#playerTwoScore").html(currentScore + answerWorth);
  resetBothUsersTextbox();
  disablePlayerSubmits();
- responsiveVoice.speak("Great job player two, you got the correct answer");
  } else {
-  $("#playerTwoScore").html(-answerWorth);
+  $("#playerTwoScore").html(currentScore + newScore);
   resetUserTwoTextbox();
   disablePlayerSubmits();;
   if (userOneAnswer === correctAnswer || userTwoAnswer === correctAnswer) {
 
   } else {
-    responsiveVoice.speak("You are wrong, the answer is " + correctAnswer.toString());
+    responsiveVoice.speak("The correct answer is " + correctAnswer.toString());
   };
 }});
 
@@ -815,12 +818,19 @@ function removeUsedBox(){
 })};
 removeUsedBox();
 
+function winningLogic() {
+  if ("#playerOneScore" >= 2000) {
+    alert("Game over, " + userOneName + " wins!");
+  } else if ("#playerTwoScore" >= 2000) {
+    alert("Game over, " + userTwoName + " wins!");
+  }
+};
+winningLogic();
 //End of document.ready
 });
 
 // To Do //
 // Make the number dissapear after question is clicked J
-// Make only one word answers (can't figure out - Kay said regEx)
 // Make it audible for each question J
 // Make a point system J
 // Make it able for two players to play J
@@ -830,7 +840,7 @@ removeUsedBox();
 // Capture user answer input J
 // Store user score from one round to the next (local storage?)
 // Animations for question popup & leave (couldn't figure out without breaking a bunch of stuff)
-// Add styling to the player boxes and board to look better; add header to show game
+// Add styling to the player boxes and board to look better; add header to show game J
 // Disable timer voice if an answer was submitted
 //Update readme.md file !!!
 //Winning logic
