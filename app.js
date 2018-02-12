@@ -3,22 +3,22 @@ $(document).ready(function() {
 console.log("jQuery is linked");
 
 // Setting usernames
-// var userOneName = prompt("Player one, please enter your username");
-// $("#playerOneName").html(userOneName);
-// var userTwoName = prompt("Player two, please enter your username");
-// $("#playerTwoName").html(userTwoName);
-// responsiveVoice.speak("Hello" + userOneName + " and " + userTwoName + ". Welcome to Jeopardy");
+var userOneName = prompt("Player one, please enter your username");
+$("#playerOneName").html(userOneName);
+var userTwoName = prompt("Player two, please enter your username");
+$("#playerTwoName").html(userTwoName);
+responsiveVoice.speak("Hello" + userOneName + " and " + userTwoName + ". Welcome to Jeopardy");
 
 var userOneAnswer;
 var userTwoAnswer;
 var correctAnswer;
 var answerWorth;
-var timerValue = 100000;
+var timerValue = 10000;
 
 var randomCategories = [];
 var categoryIds = [];
 
-//Randomize Category For Each Column
+//Randomize category for each column after button is clicked
 $("button").on('click', function() {($.ajax({
   method: "GET",
   url: "http://www.jservice.io/api/random",
@@ -88,7 +88,7 @@ $("button").on('click', function() {($.ajax({
   }
 }))});
 
-//Assigns the columns questions to the randomnly assigned column header
+//Ensures the question returned is the correct category and value
 function columnOne200Question() {($.ajax({
     method: "GET",
     url: "http://www.jservice.io/api/category?id="+categoryIds[0],
@@ -604,26 +604,18 @@ function resetBothUsersTextbox() {
 };
 
 //10 seconds to answer question before time expires
-// "|| $(".submit").data('clicked') != false" would not work
 function setTimer() {
   setTimeout(function(){
   backToBoard();
   disablePlayerSubmits();
   disablePlayersTextbox();
   resetBothUsersTextbox();
-  console.log("timer done");
-  // if ($(".submit").clicked != false) {
-  //     return;
-  // } else {
-  //   responsiveVoice.speak("No answers submitted, the correct answer is " + correctAnswer.toString());
-  // }; need to get it so that the timer function ends if submit button pressed
+  console.log("Time up. Correct answer: " + correctAnswer);
 }, timerValue)};
 
-//Assigns random question to each table box
+//Assigns question to each grid box
 //Enables player submit button & text field
-//Timer logic (after 10 seconds: hide question, show board, disable users submit buttons, reset textbox)
-//If user puts correct answer, end function
-//If neither user submits answer, voice responds with correct answer
+//Includes timer logic
 $(".columnone200").on('click', function() {
   columnOne200Question();
   enablePlayerSubmits();
@@ -754,22 +746,29 @@ $(".columnfive1000").on('click', function() {
   setTimer();
 });
 
-//When user hits Submit, go back to the board
+//When user submits quess, go back to the board
 $("form").on('submit', function(e) {
   e.preventDefault();
   backToBoard();
   disablePlayersTextbox();
 });
 
+//Logic for winning (not functional)
+function winningLogic() {
+  if (parseInt("#playerOneScore") >= 1000) {
+    alert("Game over, " + userOneName + " wins!");
+  } else if (parseInt("#playerTwoScore") >= parseInt("100")) {
+    alert("Game over, " + userTwoName + " wins!");
+  }
+};
+
 //When user one hits Submit:
 //Turn submission to lowercase, compare it to correct answer
 //If user one answer is correct, add question value to user one Score
-//Voice responds "you are correct, etc."
+//Voice responds "correct"
 //Reset both players text boxes
 //Disable forms until new question is clicked
 //If user one answer is wrong, doc the question value from user one Score
-//Reset user ones submit button and reset user one textbox
-//Voice responds "you are wrong, etc."
 $("#userOneForm").on('submit', function() {
   userOneAnswer = $(".inputText1").val().toLowerCase();
   var currentScore = parseInt($("#playerOneScore").html());
@@ -778,16 +777,13 @@ $("#userOneForm").on('submit', function() {
   $("#playerOneScore").html(currentScore + answerWorth);
   resetBothUsersTextbox();
   disablePlayerSubmits();
+  winningLogic();
+  responsiveVoice.speak("Correct");
   } else {
   $("#playerOneScore").html(currentScore + newScore);
    resetUserOneTextbox();
    disablePlayerSubmits();
-   if (userOneAnswer === correctAnswer || userTwoAnswer === correctAnswer) {
-
-   } else {
-     // responsiveVoice.speak("The correct answer is " + correctAnswer.toString());
-   };
- }});
+  }});
 //Exact same code logic as above, just for user two
 $("#userTwoForm").on('submit', function() {
  userTwoAnswer = $(".inputText2").val().toLowerCase();
@@ -797,15 +793,12 @@ $("#userTwoForm").on('submit', function() {
  $("#playerTwoScore").html(currentScore + answerWorth);
  resetBothUsersTextbox();
  disablePlayerSubmits();
+ winningLogic();
+ responsiveVoice.speak("Correct");
  } else {
   $("#playerTwoScore").html(currentScore + newScore);
   resetUserTwoTextbox();
   disablePlayerSubmits();;
-  if (userOneAnswer === correctAnswer || userTwoAnswer === correctAnswer) {
-
-  } else {
-    responsiveVoice.speak("The correct answer is " + correctAnswer.toString());
-  };
 }});
 
 //Remove $dollar value on game board after the box is clicked
@@ -818,34 +811,6 @@ function removeUsedBox(){
 })};
 removeUsedBox();
 
-function winningLogic() {
-  if ("#playerOneScore" >= 2000) {
-    alert("Game over, " + userOneName + " wins!");
-  } else if ("#playerTwoScore" >= 2000) {
-    alert("Game over, " + userTwoName + " wins!");
-  }
-};
-winningLogic();
+
 //End of document.ready
 });
-
-// To Do //
-// Make the number dissapear after question is clicked J
-// Make it audible for each question J
-// Make a point system J
-// Make it able for two players to play J
-// Disable submit boxes after after 10 seconds J
-// Reload back to board after 10 seconds J
-// Make a login (players choose username) J
-// Capture user answer input J
-// Store user score from one round to the next (local storage?)
-// Animations for question popup & leave (couldn't figure out without breaking a bunch of stuff)
-// Add styling to the player boxes and board to look better; add header to show game J
-// Disable timer voice if an answer was submitted
-//Update readme.md file !!!
-//Winning logic
-//Alert if try to squeeze the window too small
-//presentation: tell everyone why uou picked what you picked; what you learned (readme.md); challenges were css
-//Feedback - make the voice less frequent
-//Math.random to choose if the number is above .9 it gives daily double
-//Loading bar above contestant textbox to show how much time remaining

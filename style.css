@@ -1,9 +1,3 @@
-/* html {
-  background-image: url(https://www.hdwallback.net/wp-content/uploads/2017/12/Blue-abstract-background-stock.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
-
 body {
   margin: 1.5em 6em .5em 6em;
   font-family: helvetica;
@@ -38,7 +32,6 @@ th {
     font-weight: 500;
     color: #FFF;
     height: 3em;
-    width: 5em;
 }
 
 table {
@@ -174,6 +167,3 @@ button {
   margin-top: 8em;
   float: right;
 }
-
-/* delete unneccessary classes and IDs
-clean up this - as little code as possible; as easy to understand as possible */
