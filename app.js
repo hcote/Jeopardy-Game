@@ -15,13 +15,20 @@ var userTwoAnswer;
 var correctAnswer;
 var answerWorth;
 var timerValue = 1000;
-var timeAlottedForComp = 900;
+var timeAlottedForComp = (timerValue - 1);
+var difficultyLevel;
 
 var randomCategories = [];
 var categoryIds = [];
 
+//Setting difficulty
+$("#difficultyLevel").on('click', function() {
+  difficultyLevel = prompt("Enter a number between 1 and 10. 1 is the easiest, 10 is the hardest")
+  console.log(difficultyLevel);
+})
+
 //Randomize category for each column after button is clicked
-$("button").on('click', function() {($.ajax({
+$("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
   url: "http://www.jservice.io/api/random",
 
@@ -35,7 +42,7 @@ $("button").on('click', function() {($.ajax({
     console.log("Category not assigned");
   }
 }))});
-$("button").on('click', function() {($.ajax({
+$("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
   url: "http://www.jservice.io/api/random",
 
@@ -49,7 +56,7 @@ $("button").on('click', function() {($.ajax({
     console.log("Category not assigned");
   }
 }))});
-$("button").on('click', function() {($.ajax({
+$("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
   url: "http://www.jservice.io/api/random",
 
@@ -62,7 +69,7 @@ $("button").on('click', function() {($.ajax({
     console.log("Category not assigned");
   }
 }))});
-$("button").on('click', function() {($.ajax({
+$("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
   url: "http://www.jservice.io/api/random",
 
@@ -75,7 +82,7 @@ $("button").on('click', function() {($.ajax({
     console.log("Category not assigned");
   }
 }))});
-$("button").on('click', function() {($.ajax({
+$("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
   url: "http://www.jservice.io/api/random",
 
@@ -616,7 +623,7 @@ function setTimer() {
 }, timerValue)};
 
 function computerWins() {
-  if (Math.random() > .9) {
+  if (Math.random() < (difficultyLevel * 20)) {
     setTimeout(function() {
       backToBoard();
       disablePlayerSubmits();
