@@ -585,6 +585,11 @@ function enablePlayerSubmits() {
   $(".submit").removeAttr("disabled");
   $(".submit").addClass("submitGreen");
 };
+function enablePlayerOneSubmits() {
+  $(".inputText1").removeAttr("disabled");
+  $("#plsyerSubmit").removeAttr("disabled");
+  $(".submit").addClass("submitGreen");
+};
 function disablePlayerSubmits() {
   $(".submit").prop("disabled", "true");
 };
@@ -643,155 +648,155 @@ function computerWins() {
 //Includes timer logic
 $(".columnone200").on('click', function() {
   columnOne200Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
   computerWins();
 });
 $(".columnone400").on('click', function() {
   columnOne400Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnone600").on('click', function() {
   columnOne600Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnone800").on('click', function() {
   columnOne800Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnone1000").on('click', function() {
   columnOne1000Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 
 $(".columntwo200").on('click', function() {
   columnTwo200Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columntwo400").on('click', function() {
   columnTwo400Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columntwo600").on('click', function() {
   columnTwo600Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columntwo800").on('click', function() {
   columnTwo800Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columntwo1000").on('click', function() {
   columnTwo1000Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 
 $(".columnthree200").on('click', function() {
   columnThree200Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnthree400").on('click', function() {
   columnThree400Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnthree600").on('click', function() {
   columnThree600Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnthree800").on('click', function() {
   columnThree800Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnthree1000").on('click', function() {
   columnThree1000Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 
 $(".columnfour200").on('click', function() {
   columnFour200Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnfour400").on('click', function() {
   columnFour400Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnfour600").on('click', function() {
   columnFour600Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnfour800").on('click', function() {
   columnFour800Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnfour1000").on('click', function() {
   columnFour1000Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 
 $(".columnfive200").on('click', function() {
   columnFive200Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnfive400").on('click', function() {
   columnFive400Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnfive600").on('click', function() {
   columnFive600Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnfive800").on('click', function() {
   columnFive800Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
 $(".columnfive1000").on('click', function() {
   columnFive1000Question();
-  enablePlayerSubmits();
+  enablePlayerOneSubmits();
   setTimer();
     computerWins();
 });
