@@ -31,12 +31,19 @@ Challenges
 	7. CSS (still now how I want it)
 	8. Aside from .6, keeping everything organized was the biggest challenge. I commented a lot in my code, but each event triggers several others, and my code was repetitive, making it hard to figure out which function was running when. For example, when a player submits a guess, the following functions run: a timer ends, the table reappears, the question disappears, the question value clicked disappears, the submit button is disabled, the user textbox gets disabled, the player score is updated, if/else statements are run to decide what to do if the answer was right/wrong. And that's just one of several actions happening one after the next.
 
+In the pipeline
+ 1. Improve button styling/positioning
+ 2. Include an instructions popup that slides in
+ 3. Create button to disable the voice if a player is tired of it
+ 4. Stop the setTimer function from running if the submit button is clicked
+ 5. Allow for customers to see the answers if they don't get it right
+ 6. Make sure the boxes already clicked on are unable to be clicked again until categories are randomized
+ 7. The question board needs to be consistently sized (currently changed based on the text generated from the randomize categories button)
+ 8. A timer animation showing the customer how much time is left
 
 Didn't get to / couldn't figure out
 	1. Include a countdown or animation dictating how much time is left
 	2. Host it online (could not do through Github bc API link is http not https)
-	3. Math.random to choose if the number is above .9 it gives daily double
-	4. Make it able for two players to play at the same time
+	3. Math.random to give daily double
 	5. Animations for question popup & leave (couldn't figure out without breaking a bunch of stuff)
 	6. CSS could be better (both looks and the structure of my code)
-	7. Make player 2 a bot so it's actually functional (button to choose which - unlink script src for 2 player or computer)
