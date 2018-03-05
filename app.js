@@ -14,7 +14,7 @@ var userOneAnswer;
 var userTwoAnswer;
 var correctAnswer;
 var answerWorth;
-var timerValue = 1000;
+var timerValue;
 var timeAlottedForComp = (timerValue - 1);
 var difficultyLevel;
 
@@ -25,6 +25,12 @@ var categoryIds = [];
 $("#difficultyLevel").on('click', function() {
   difficultyLevel = prompt("Enter a number between 1 and 10. 1 is the easiest, 10 is the hardest")
   console.log(difficultyLevel);
+})
+
+//Player Setting Timer
+$("#timer").on('click', function(){
+  timerValue = prompt("Choose number of seconds you have to answer each question?");
+  timerValue = (timerValue * 1000);
 })
 
 //Randomize category for each column after button is clicked
