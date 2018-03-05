@@ -3,10 +3,10 @@ Technologies Used:
 	HTML, CSS, JavaScript, jQuery, Git/Github
 
 Approach
-	Wanted to focus more on JavaScript than HTML and CSS
-	Incorporate as much of unit 1 knowledge as possible, especially API's
-	Wanted to do a trivia game, and luckily Jeopardy had an API
-	Tried to replicate the actual game as much as possible with my game
+	-Wanted to focus more on JavaScript than HTML and CSS
+	-Incorporate as much of unit 1 knowledge as possible, especially API's
+	-Wanted to do a trivia game, and luckily Jeopardy had an API
+	-Didn't plan everything out at the start - picked something to do then went on to whatever was my next idea. Overall goal was to replicate the actual game as close as possible
 
 Instructions
 	1. Randomize the question categories
@@ -34,8 +34,9 @@ Challenges
 
 Didn't get to / couldn't figure out
 	1. Include a countdown or animation dictating how much time is left
-	2. Host it online (could not do through bc API link is http not https)
+	2. Host it online (could not do through Github bc API link is http not https)
 	3. Math.random to choose if the number is above .9 it gives daily double
 	4. Make it able for two players to play at the same time
 	5. Animations for question popup & leave (couldn't figure out without breaking a bunch of stuff)
 	6. CSS could be better (both looks and the structure of my code)
+	7. Make player 2 a bot so it's actually functional (button to choose which - unlink script src for 2 player or computer)
