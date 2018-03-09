@@ -28,7 +28,6 @@
 * How do I get the question values to compound after each question, rather than reset? Essentially had to put values (current score & value of question) in variables and run the parseInt() method rather than calling them straight with json.value
 * How do I randomly get categories to populate the column headers? 5 different AJAX calls, each one spliced the data into an array, which then replaced the html() of the column header
 * Then, how do I ensure the random questions in each column correspond with the column header, as well as value? Find a unique identifier (ID) of each category, put that in a new array, then include that unique random ID on the API call url to get the questions for that ID. Then get the index of each question, and apply that to the appropriate grid box (right question value (row) and right question category (column)).
-* CSS (still now how I want it)
 * Aside from .6, keeping everything organized was the biggest challenge. I commented a lot in my code, but each event triggers several others, and my code was repetitive, making it hard to figure out which function was running when. For example, when a player submits a guess, the following functions run: a timer ends, the table reappears, the question disappears, the question value clicked disappears, the submit button is disabled, the user textbox gets disabled, the player score is updated, if/else statements are run to decide what to do if the answer was right/wrong. And that's just one of several actions happening one after the next.
 
 
