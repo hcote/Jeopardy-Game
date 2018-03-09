@@ -1,14 +1,14 @@
-Technologies Used:
-	API / AJAX (Jeopardy and Responsive Voice)
-	HTML, CSS, JavaScript, jQuery, Git/Github
+# Technologies Used:
+	* API / AJAX (Jeopardy and Responsive Voice)
+	* HTML, CSS, JavaScript, jQuery, Git/Github
 
-Approach
-	-Wanted to focus more on JavaScript than HTML and CSS
-	-Incorporate as much of unit 1 knowledge as possible, especially API's
-	-Wanted to do a trivia game, and luckily Jeopardy had an API
-	-Didn't plan everything out at the start - picked something to do then went on to whatever was my next idea. Overall goal was to replicate the actual game as close as possible
+# Approach
+	* Wanted to focus more on JavaScript than HTML and CSS
+	* Incorporate as much of unit 1 knowledge as possible, especially API's
+	* Wanted to do a trivia game, and luckily Jeopardy had an API
+	* Didn't plan everything out at the start - picked something to do then went on to whatever was my next idea. Overall goal was to replicate the actual game as close as possible
 
-Instructions
+# Instructions
 	1. Randomize the question categories
 	2. Pick a grid box (in no particular order)
 	3. Random question pops up - text boxes and submit buttons are enabled
@@ -21,22 +21,20 @@ Instructions
 	10. The first player to 2,000 points wins the game
 
 
-Challenges
-	1. Writing (trying to write) DRY code for situations where there are several different outcomes and each one returns a different action (player 1 submits wrong answer, submits right answer, doesn't submit any answer, and same for player 2)
-	2. Enabling/disabling player submit buttons, and clear answer boxes based on different events - confusion between when to use .val(), .Attr() .html() or .prop(). After a million trial and error runs, .prop did it.
-	3. Very tough to make the grid box clicked disappear after a contestant clicks it. Had to write a function, within a function, within another function (I think my first time doing that).
-	4. How do I get the question values to compound after each question, rather than reset? Essentially had to put values (current score & value of question) in variables and run the parseInt() method rather than calling them straight with json.value
-	5. How do I randomly get categories to populate the column headers? 5 different AJAX calls, each one spliced the data into an array, which then replaced the html() of the column header
-	6. Then, how do I ensure the random questions in each column correspond with the column header, as well as value? Find a unique identifier (ID) of each category, put that in a new array, then include that unique random ID on the API call url to get the questions for that ID. Then get the index of each question, and apply that to the appropriate grid box (right question value (row) and right question category (column)).
-	7. CSS (still now how I want it)
-	8. Aside from .6, keeping everything organized was the biggest challenge. I commented a lot in my code, but each event triggers several others, and my code was repetitive, making it hard to figure out which function was running when. For example, when a player submits a guess, the following functions run: a timer ends, the table reappears, the question disappears, the question value clicked disappears, the submit button is disabled, the user textbox gets disabled, the player score is updated, if/else statements are run to decide what to do if the answer was right/wrong. And that's just one of several actions happening one after the next.
+# Challenges
+* Writing (trying to write) DRY code for situations where there are several different outcomes and each one returns a different action (player 1 submits wrong answer, submits right answer, doesn't submit any answer, and same for player 2)
+* Enabling/disabling player submit buttons, and clear answer boxes based on different events - confusion between when to use .val(), .Attr() .html() or .prop(). After a million trial and error runs, .prop did it.
+* Very tough to make the grid box clicked disappear after a contestant clicks it. Had to write a function, within a function, within another function (I think my first time doing that).
+* How do I get the question values to compound after each question, rather than reset? Essentially had to put values (current score & value of question) in variables and run the parseInt() method rather than calling them straight with json.value
+* How do I randomly get categories to populate the column headers? 5 different AJAX calls, each one spliced the data into an array, which then replaced the html() of the column header
+* Then, how do I ensure the random questions in each column correspond with the column header, as well as value? Find a unique identifier (ID) of each category, put that in a new array, then include that unique random ID on the API call url to get the questions for that ID. Then get the index of each question, and apply that to the appropriate grid box (right question value (row) and right question category (column)).
+* CSS (still now how I want it)
+* Aside from .6, keeping everything organized was the biggest challenge. I commented a lot in my code, but each event triggers several others, and my code was repetitive, making it hard to figure out which function was running when. For example, when a player submits a guess, the following functions run: a timer ends, the table reappears, the question disappears, the question value clicked disappears, the submit button is disabled, the user textbox gets disabled, the player score is updated, if/else statements are run to decide what to do if the answer was right/wrong. And that's just one of several actions happening one after the next.
 
 
-Didn't get to / couldn't figure out
+# Future Plans
 	1. Include a countdown or animation dictating how much time is left
 	2. Host it online (could not do through Github bc API link is http not https)
-	3. Math.random to choose if the number is above .9 it gives daily double
-	4. Make it able for two players to play at the same time
+	3. Math.random to give daily double
 	5. Animations for question popup & leave (couldn't figure out without breaking a bunch of stuff)
-	6. CSS could be better (both looks and the structure of my code)
-	7. Make player 2 a bot so it's actually functional (button to choose which - unlink script src for 2 player or computer)
+	6. Improved CSS
