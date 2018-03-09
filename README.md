@@ -1,12 +1,12 @@
 # Technologies Used:
-	* API / AJAX (Jeopardy and Responsive Voice)
-	* HTML, CSS, JavaScript, jQuery, Git/Github
+* API / AJAX (Jeopardy and Responsive Voice)
+* HTML, CSS, JavaScript, jQuery, Git/Github
 
 # Approach
-	* Wanted to focus more on JavaScript than HTML and CSS
-	* Incorporate as much of unit 1 knowledge as possible, especially API's
-	* Wanted to do a trivia game, and luckily Jeopardy had an API
-	* Didn't plan everything out at the start - picked something to do then went on to whatever was my next idea. Overall goal was to replicate the actual game as close as possible
+* Wanted to focus more on JavaScript than HTML and CSS
+* Incorporate as much of unit 1 knowledge as possible, especially API's
+* Wanted to do a trivia game, and luckily Jeopardy had an API
+* The goals were to replicate the actual game as close as possible, prioritize ease of use, and keep it simple.
 
 # Instructions
 	1. Randomize the question categories
