@@ -18,6 +18,23 @@
         </header>
         <section class="dailydoublehidden"></section>
         <section class="hidden"></section>
+        <div class="sidebar">
+        <p class="instructions"><a href="#">Instructions</a><p>
+        <p>1. Set your name (if you choose) </p>
+        <p>2. Click the button below to randomize the categories </p>
+        <button id="randomizeCats" type="button" name="button" class="button">Randomize Categories!</button>
+        <p>3. Click any box you choose (categories are at the top) </p>
+        <p>4. NOTE: You are competing against a computer </p>
+        <p>5. Once the question shows up, you have ten seconds to answer the question </p>
+        <p>6. Four possible answers will appear, click the one you think is correct </p>
+        <p>7. If you are correct, that question's value is added to your current score </p>
+        <p>8. If you are wrong, that question's value is deducted from your current score </p>
+        <p>9. You do not have to answer a question </p>
+        <p>10. The first contestant to 2,000 points wins! </p>
+          <button id="changeName"type="button" name="button">Click To Set or Change Your Name</button>
+          <button id="difficultyLevel"type="button" name="button">Set Computer Skill Level</button>
+
+        </div>
         <table>
               <tr id="tableHead">
                     <th class="CategoryOne">Category</th>
@@ -72,10 +89,6 @@
                     </form>
                     <div class="playerNameDiv"><h4 id="playerOneName">Player 1</h4></div>
               </div>
-              <button id="randomizeCats" type="button" name="button">Randomize Categories!</button> <br>
-              <button id="changeName"type="button" name="button">Click To Set or Change Your Name</button>
-              <button id="difficultyLevel"type="button" name="button">Set Computer Skill Level</button>
-              <button id="timer"type="button" name="button">How Many Seconds Would You Like Per Question?</button>
               <div class="scoreBox">
                     <div class="playerScore"><h5 id="playerTwoScore">000</h5></div>
                     <form id="userTwoForm" action="index.html" method="post">
@@ -85,6 +98,7 @@
                     <div class="playerNameDiv"><h4 id="playerTwoName">Computer</h4></div>
               </div>
         </div>
+
   </body>
 </html>
 

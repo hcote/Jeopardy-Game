@@ -10,11 +10,13 @@ $("#playerOneName").html(userOneName);
 // $("#playerTwoName").html(userTwoName);
 });
 
+var hint = alert("Make sure to read the instructions before playing.")
+
 var userOneAnswer;
 var userTwoAnswer;
 var correctAnswer;
 var answerWorth;
-var timerValue;
+var timerValue = 10000;
 var timeAlottedForComp = (timerValue - 1);
 var difficultyLevel;
 
@@ -27,11 +29,6 @@ $("#difficultyLevel").on('click', function() {
   console.log(difficultyLevel);
 })
 
-//Player Setting Timer
-$("#timer").on('click', function(){
-  timerValue = prompt("Choose number of seconds you have to answer each question?");
-  timerValue = (timerValue * 1000);
-})
 
 //Randomize category for each column after button is clicked
 $("#randomizeCats").on('click', function() {($.ajax({
