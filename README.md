@@ -1,4 +1,5 @@
-![jeopardy](https://user-images.githubusercontent.com/34493689/40591387-108e1e82-61c5-11e8-9bfe-021ce80bd9a3.png)
+![jeopardy 1](https://user-images.githubusercontent.com/34493689/40591432-20e94346-61c6-11e8-98b2-556f8146b115.png =400x300)
+![jeopardy 2](https://user-images.githubusercontent.com/34493689/40591435-26c3924e-61c6-11e8-9ab8-a07f6df76b5c.png =200x150)
 
 ## NOTE
 * The jeopardy API request is http, not https, and therefore cannot be hosted on github or heroku
