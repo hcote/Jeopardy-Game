@@ -1,4 +1,4 @@
-![jeopardy 1](https://user-images.githubusercontent.com/34493689/40591432-20e94346-61c6-11e8-98b2-556f8146b115.png =400x300)
+<img src="https://user-images.githubusercontent.com/34493689/40591432-20e94346-61c6-11e8-98b2-556f8146b115.png" alt="drawing" style="width: 200px;"/>
 ![jeopardy 2](https://user-images.githubusercontent.com/34493689/40591435-26c3924e-61c6-11e8-9ab8-a07f6df76b5c.png =200x150)
 
 ## NOTE
