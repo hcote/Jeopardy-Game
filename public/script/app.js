@@ -10,14 +10,14 @@ $("#playerOneName").html(userOneName);
 // $("#playerTwoName").html(userTwoName);
 });
 
-alert("Make sure to read the instructions before playing.")
+alert("Make sure to read the instructions before playing.");
 
 var userOneAnswer;
 var userTwoAnswer;
 var correctAnswer;
 var answerWorth;
 var timerValue = 5000;
-var timeAlottedForComp = (timerValue - 1);
+var timeAlottedForComp = (timerValue - 500);
 var difficultyLevel;
 
 var randomCategories = [];
@@ -1185,6 +1185,7 @@ function backToBoard() {
   $("section").addClass("hidden");
   $(".submit").removeClass("submitGreen");
   $("article").addClass("hidden");
+  checkWinner();
 };
 
 //Clear any text in users textbox
@@ -1210,7 +1211,7 @@ function setTimer() {
 }, timerValue)};
 
 function computerWins() {
-  if (Math.random() < (difficultyLevel * 20)) {
+  if (Math.random() * 100 < (difficultyLevel * 10)) {
     setTimeout(function() {
       backToBoard();
       disablePlayerSubmits();
@@ -1391,13 +1392,17 @@ $("form").on('submit', function(e) {
 });
 
 //Logic for winning
-  // if (parseInt($("#playerOneScore").html()) > 2000); {
-  //   alert("Congrats, you win! Refresh the page to play again");
-  // } else if (parseInt($("#playerOneScore").html()) < 1000) {
-  //   alert("You lose. Refresh the page to play again.");
-  // } else {
-  //   return;
-  // }
+function checkWinner() {
+    if (parseInt($("#playerOneScore").html()) >= 2000) {
+    alert("Congrats, you win! Refresh the page to play again");
+    console.log("yo");
+  } else if (parseInt($("#playerTwoScore").html()) >= 2000) {
+    alert("You lose. Refresh the page to play again.");
+    console.log("comp wins");
+  } else {
+    console.log("Please choose another question box.");;
+  }
+}
 
 
 //When user one hits Submit:
