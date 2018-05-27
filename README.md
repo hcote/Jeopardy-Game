@@ -1,5 +1,5 @@
-<img src="https://user-images.githubusercontent.com/34493689/40591432-20e94346-61c6-11e8-98b2-556f8146b115.png" alt="drawing" width="200px" />
-<img src="https://user-images.githubusercontent.com/34493689/40591435-26c3924e-61c6-11e8-9ab8-a07f6df76b5c.png" alt="drawing" width="100px" />
+<img src="https://user-images.githubusercontent.com/34493689/40591432-20e94346-61c6-11e8-98b2-556f8146b115.png" alt="drawing" width="600px" />
+<img src="https://user-images.githubusercontent.com/34493689/40591435-26c3924e-61c6-11e8-9ab8-a07f6df76b5c.png" alt="drawing" width="600px" />
 
 ## NOTE
 * The jeopardy API request is http, not https, and therefore cannot be hosted on github or heroku
