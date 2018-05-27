@@ -3,12 +3,12 @@
       <head>
             <meta charset="utf-8">
             <title>Jeopardy</title>
-            <link rel="stylesheet" href="/style/style.css">
+            <link rel="stylesheet" href="./style.css">
             <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-            <script src="/script/jquery-3.3.1.min.js" charset="utf-8"></script>
-            <script src="/script/app.js" charset="utf-8"></script>
+            <script src="./jquery-3.3.1.min.js" charset="utf-8"></script>
+            <script src="./app.js" charset="utf-8"></script>
             <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
       </head>
   <body>
@@ -29,52 +29,53 @@
         <p>6. Four possible answers will appear, click the one you think is correct </p>
         <p>7. If you are correct, that question's value is added to your current score </p>
         <p>8. If you are wrong, that question's value is deducted from your current score </p>
-        <p>9. There is no penalty for not answering a question. </p>
-        <p>1<span>0. </span> The first contestant to 2,000 points wins! </p>
+        <p>9. There is no penalty for not answering a question </p>
+        <p>1<span>0. </span> Even if you guess, the computer also can too (it's not built so that only one contestant can answer)</p>
+        <p>1<span>1. </span> The first contestant to 2,000 points wins! </p>
 
         </div>
         <table>
               <tr id="tableHead">
-                <th class="category CategoryOne">Category</th>
-                <th class="category CategoryTwo">Category</th>
-                <th class="category CategoryThree">Category</th>
-                <th class="category CategoryFour">Category</th>
-                <th class="category CategoryFive">Category</th>
+                    <th class="CategoryOne">Category</th>
+                    <th class="CategoryTwo">Category</th>
+                    <th class="CategoryThree">Category</th>
+                    <th class="CategoryFour">Category</th>
+                    <th class="CategoryFive">Category</th>
               </tr>
               <tr>
-                <td class="box cat-1">$200</td>
-                <td class="box cat-2">$200</td>
-                <td class="box cat-3">$200</td>
-                <td class="box cat-4">$200</td>
-                <td class="box cat-5">$200</td>
+                    <td class="box columnone200">$200</td>
+                    <td class="box columntwo200">$200</td>
+                    <td class="box columnthree200">$200</td>
+                    <td class="box columnfour200">$200</td>
+                    <td class="box columnfive200">$200</td>
               </tr>
               <tr>
-                <td class="box cat-1">$400</td>
-                <td class="box cat-2">$400</td>
-                <td class="box cat-3">$400</td>
-                <td class="box cat-4">$400</td>
-                <td class="box cat-5">$400</td>
+                    <td class="box columnone400">$400</td>
+                    <td class="box columntwo400">$400</td>
+                    <td class="box columnthree400">$400</td>
+                    <td class="box columnfour400">$400</td>
+                    <td class="box columnfive400">$400</td>
               </tr>
               <tr>
-                <td class="box cat-1">$600</td>
-                <td class="box cat-2">$600</td>
-                <td class="box cat-3">$600</td>
-                <td class="box cat-4">$600</td>
-                <td class="box cat-5">$600</td>
+                    <td class="box columnone600">$600</td>
+                    <td class="box columntwo600">$600</td>
+                    <td class="box columnthree600">$600</td>
+                    <td class="box columnfour600">$600</td>
+                    <td class="box columnfive600">$600</td>
               </tr>
               <tr>
-                <td class="box cat-1">$800</td>
-                <td class="box cat-2">$800</td>
-                <td class="box cat-3">$800</td>
-                <td class="box cat-4">$800</td>
-                <td class="box cat-5">$800</td>
+                    <td class="box columnone800">$800</td>
+                    <td class="box columntwo800">$800</td>
+                    <td class="box columnthree800">$800</td>
+                    <td class="box columnfour800">$800</td>
+                    <td class="box columnfive800">$800</td>
               </tr>
               <tr>
-                <td class="box cat-1">$1000</td>
-                <td class="box cat-2">$1000</td>
-                <td class="box cat-3">$1000</td>
-                <td class="box cat-4">$1000</td>
-                <td class="box cat-5">$1000</td>
+                    <td class="box columnone1000">$1000</td>
+                    <td class="box columntwo1000">$1000</td>
+                    <td class="box columnthree1000">$1000</td>
+                    <td class="box columnfour1000">$1000</td>
+                    <td class="box columnfive1000">$1000</td>
               </tr>
         </table>
 
@@ -98,7 +99,6 @@
                     </form>
                     <div class="playerNameDiv"><h4 id="playerOneName">Player 1</h4></div>
               </div>
-
               <div class="scoreBox">
                     <div class="playerScore"><h5 id="playerTwoScore">000</h5></div>
                     <form id="userTwoForm" action="index.html" method="post">

@@ -9,15 +9,15 @@ header {
   background-position: center;
   background-size: contain;
   margin-top: 2em;
-  margin-right: 7.5em;
+  margin-right: 18em;
 }
 
 .flexing {
   display: flex;
   flex-direction: row;
-  width: 45%;
+  width: 60%;
   margin: auto;
-  margin-right: 31em;
+  margin-right: 27em;
 }
 
 .mc {
@@ -178,7 +178,7 @@ p::first-letter {
   flex-direction: row;
   justify-content: space-between;
   margin: auto;
-  margin-right: 31.8em;
+  margin-right: 32.2em;
   width: 640px;
 }
 

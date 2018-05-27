@@ -1,6 +1,10 @@
+## NOTE
+* The jeopardy API request is http, not https, and therefore cannot be hosted on github or heroku
+* To see app, clone down this repo, and open index.html in your browser
+
 # Technologies Used:
 * API / AJAX (Jeopardy and Responsive Voice)
-* HTML, CSS, JavaScript, jQuery, Git/Github
+* HTML, CSS, JavaScript, jQuery
 
 # Approach
 * Wanted to focus more on JavaScript than HTML and CSS
