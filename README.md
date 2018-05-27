@@ -1,3 +1,5 @@
+![jeopardy](https://user-images.githubusercontent.com/34493689/40591387-108e1e82-61c5-11e8-9bfe-021ce80bd9a3.png)
+
 ## NOTE
 * The jeopardy API request is http, not https, and therefore cannot be hosted on github or heroku
 * To see app, clone down this repo, and open index.html in your browser
