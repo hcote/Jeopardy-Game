@@ -2,7 +2,9 @@
 
 ## NOTE
 * The jeopardy API request is http, not https, and therefore cannot be hosted on github or heroku
-* To see app, clone down this repo, and open index.html in your browser
+* To see app, clone down this repo, and open index.html in your browser (type the following commands in your terminal)
+	1. git clone https://github.com/hcote/Jeopardy-Game.git
+	2. open index.html
 
 # Technologies Used:
 * API / AJAX (Jeopardy and Responsive Voice)
