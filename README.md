@@ -3,6 +3,7 @@
 ## NOTE
 * The jeopardy API request is http, not https, and therefore cannot be hosted on github or heroku
 * To see working app, type the following commands in your terminal:
+
 	1. git clone https://github.com/hcote/Jeopardy-Game.git
 	2. cd Jeopardy-Game
 	2. open index.html
