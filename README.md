@@ -1,4 +1,4 @@
-<a href="https://imgflip.com/gif/2e770v"><img src="https://i.imgflip.com/2e770v.gif" title="made at imgflip.com"/></a>
+<a href="https://imgflip.com/gif/2e770v"><img src="https://i.imgflip.com/2e770v.gif" title="made at imgflip.com" width="600px"/></a>
 
 ## NOTE
 * The jeopardy API request is http, not https, and therefore cannot be hosted on github or heroku
