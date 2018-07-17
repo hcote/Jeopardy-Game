@@ -1,4 +1,4 @@
-<a href="https://imgflip.com/gif/2e777e"><img src="https://i.imgflip.com/2e777e.gif" title="made at imgflip.com" width="500px"/></a>
+<img src="https://user-images.githubusercontent.com/34493689/40591432-20e94346-61c6-11e8-98b2-556f8146b115.png" alt="drawing" width="800px" />
 
 ## NOTE
 * The jeopardy API request is http, not https, and therefore cannot be hosted on github or heroku
@@ -28,6 +28,8 @@
  8. If you are wrong, that question's value is deducted from your current score
  9. There is no penalty for not answering a question.
  10. The first contestant to 2,000 points wins!
+ 
+ <a href="https://imgflip.com/gif/2e777e"><img src="https://i.imgflip.com/2e777e.gif" title="made at imgflip.com" width="500px"/></a>
 
 # Future Plans
 	1. Include a countdown or animation dictating how much time is left
