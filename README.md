@@ -1,38 +1,38 @@
-Technologies Used:
-	API / AJAX (Jeopardy and Responsive Voice)
-	HTML, CSS, JavaScript, jQuery, Git/Github
+<img src="https://user-images.githubusercontent.com/34493689/40591432-20e94346-61c6-11e8-98b2-556f8146b115.png" alt="drawing" width="800px" />
 
-Approach
-	-Focus more on JavaScript than HTML and CSS
-	-Incorporate API's
-	-Wanted to do a trivia game, and luckily Jeopardy had an API
-	-Goal was to replicate the actual game as close as possible, but make it easy to play (hence the multiple choice)
+## NOTE
+* The jeopardy API request is http, not https, and therefore cannot be hosted on github or heroku
+* To see working app, type the following commands in your terminal:
+	1. git clone https://github.com/hcote/Jeopardy-Game.git
+	2. cd Jeopardy-Game
+	2. open index.html
 
-Instructions
-1. Set your name (if you choose)
-2. Click the button below to randomize the categories
-3. Click any box you choose (categories are at the top)
-4. You are competing against a computer. Set it's difficulty level below.
-5. Once the question shows up, you have ten seconds to answer the question
-6. Four possible answers will appear, click the one you think is correct
-7. If you are correct, that question's value is added to your current score
-8. If you are wrong, that question's value is deducted from your current score
-9. You do not have to answer a question
-10. The first contestant to 2,000 points wins!
+# Technologies Used:
+* API / AJAX (Jeopardy and Responsive Voice)
+* HTML, CSS, JavaScript, jQuery
 
+# Approach
+* Wanted to focus more on JavaScript than HTML and CSS
+* Incorporate as much of unit 1 knowledge as possible, especially API's
+* Wanted to do a trivia game, and luckily Jeopardy had an API
+* The goals were to replicate the actual game as close as possible, prioritize ease of use, and keep it simple.
 
+# Instructions
+ 1. Set your name (if you choose)
+ 2. Click the button below to randomize the categories
+ 3. Click any question box you choose (categories are at the top)
+ 4. If you'd like to play against the computer, set it's difficulty level below. Otherwise, you can just play yourself.
+ 5. Once the question shows up, you have FIVE seconds to answer the question
+ 6. Four possible answers will appear, click the one you think is correct
+ 7. If you are correct, that question's value is added to your current score
+ 8. If you are wrong, that question's value is deducted from your current score
+ 9. There is no penalty for not answering a question.
+ 10. The first contestant to 2,000 points wins!
+ 
+ <a href="https://imgflip.com/gif/2e777e"><img src="https://i.imgflip.com/2e777e.gif" title="made at imgflip.com" width="500px"/></a>
 
-Challenges
-	1. Writing DRY code for situations where there are several different outcomes and each one returns a different action (player 1 submits wrong answer, submits right answer, doesn't submit any answer, and same for player 2)
-	2. Enabling/disabling player submit buttons, and clear answer boxes based on different events - confusion between when to use .val(), .Attr() .html() or .prop(). After a million trial and error runs, .prop did it.
-	3. To make the grid box clicked disappear after a contestant clicks it. Had to write a function, within a function, within another function (I think my first time doing that).
-	4. How do I get the question values to compound after each question, rather than reset? Essentially had to put values (current score & value of question) in variables and run the parseInt() method rather than calling them straight with json.value
-	5. How do I randomly get categories to populate the column headers? 5 different AJAX calls, each one spliced the data into an array, which then replaced the html() of the column header
-	6. Then, how do I ensure the random questions in each column correspond with the column header, as well as value? Find a unique identifier (ID) of each category, put that in a new array, then include that unique random ID on the API call url to get the questions for that ID. Then get the index of each question, and apply that to the appropriate grid box (right question value (row) and right question category (column)).
+# Future Plans
+	1. Include a countdown or animation dictating how much time is left
+	2. Fix existing bugs
 
-
-In the pipeline
- 1. Stop the setTimer function from running if the submit button is clicked
- 2. Allow for players to see the answers if they don't get it right
- 3. Make sure the boxes already clicked on are unable to be clicked again until categories are randomized
- 4. A timer animation showing the customer how much time is left
+<img src="https://user-images.githubusercontent.com/34493689/40591435-26c3924e-61c6-11e8-9ab8-a07f6df76b5c.png" alt="drawing" width="800px" />
