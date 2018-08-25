@@ -16,13 +16,8 @@ var userOneAnswer;
 var userTwoAnswer;
 var correctAnswer;
 var answerWorth;
-<<<<<<< HEAD:public/script/app.js
 var timerValue = 5000;
 var timeAlottedForComp = (timerValue - 1);
-=======
-var timerValue = 10000;
-var timeAlottedForComp = (timerValue - 500);
->>>>>>> 56bd069b361ad12eca9b82ee347f079a6ba761e5:app.js
 var difficultyLevel;
 
 var colOne;
@@ -35,7 +30,6 @@ var randomCategories = [];
 var categoryIds = [];
 var numTimesRandomized = 1
 
-<<<<<<< HEAD:public/script/app.js
 // LEFT OFF HERE: need to make sure line 127 in this file is copied and pasted
 // to every function column x; and need to find a way to fill in dummy
 // multiple choice answers. started with the if else if math.random function
@@ -64,8 +58,7 @@ var numTimesRandomized = 1
 //   }
 // }
 
-=======
->>>>>>> 56bd069b361ad12eca9b82ee347f079a6ba761e5:app.js
+
 //Setting difficulty
 $("#difficultyLevel").on('click', function() {
   difficultyLevel = prompt("Enter a number between 1 and 10. 1 is the easiest, 10 is the hardest");
