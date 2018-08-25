@@ -17,57 +17,64 @@ var userTwoAnswer;
 var correctAnswer;
 var answerWorth;
 var timerValue = 5000;
-var timeAlottedForComp = (timerValue - 500);
+var timeAlottedForComp = (timerValue - 1);
 var difficultyLevel;
+
+var colOne;
+var colTwo;
+var colThree;
+var colFour;
+var colFive;
 
 var randomCategories = [];
 var categoryIds = [];
+var numTimesRandomized = 1
 
 // LEFT OFF HERE: need to make sure line 127 in this file is copied and pasted
 // to every function column x; and need to find a way to fill in dummy
 // multiple choice answers. started with the if else if math.random function
 // below here
-var multipleChoiceMath = function() {
-  if (Math.random() >= .75) {
-    $('.multipleChoiceA').html(correctAnswer);
-    $('.multipleChoiceB').html("hey");
-    $('.multipleChoiceC').html("hey");
-    $('.multipleChoiceD').html("hey");
-  } else if (Math.random() >= .5) {
-    $('.multipleChoiceA').html("hey");
-    $('.multipleChoiceB').html(correctAnswer);
-    $('.multipleChoiceC').html("hey");
-    $('.multipleChoiceD').html("hey");
-  } else if (Math.random() >= .25) {
-    $('.multipleChoiceA').html("hey");
-    $('.multipleChoiceB').html("hey");
-    $('.multipleChoiceC').html(correctAnswer);
-    $('.multipleChoiceD').html("hey");
-  } else {
-    $('.multipleChoiceA').html("hey");
-    $('.multipleChoiceB').html("hey");
-    $('.multipleChoiceC').html("hey");
-    $('.multipleChoiceD').html(correctAnswer);
-  }
-}
+// var multipleChoiceMath = function() {
+//   if (Math.random() >= .75) {
+//     $('.multipleChoiceA').html(correctAnswer);
+//     $('.multipleChoiceB').html("hey");
+//     $('.multipleChoiceC').html("hey");
+//     $('.multipleChoiceD').html("hey");
+//   } else if (Math.random() >= .5) {
+//     $('.multipleChoiceA').html("hey");
+//     $('.multipleChoiceB').html(correctAnswer);
+//     $('.multipleChoiceC').html("hey");
+//     $('.multipleChoiceD').html("hey");
+//   } else if (Math.random() >= .25) {
+//     $('.multipleChoiceA').html("hey");
+//     $('.multipleChoiceB').html("hey");
+//     $('.multipleChoiceC').html(correctAnswer);
+//     $('.multipleChoiceD').html("hey");
+//   } else {
+//     $('.multipleChoiceA').html("hey");
+//     $('.multipleChoiceB').html("hey");
+//     $('.multipleChoiceC').html("hey");
+//     $('.multipleChoiceD').html(correctAnswer);
+//   }
+// }
 
 //Setting difficulty
 $("#difficultyLevel").on('click', function() {
-  difficultyLevel = prompt("Enter a number between 1 and 10. 1 is the easiest, 10 is the hardest")
+  difficultyLevel = prompt("Enter a number between 1 and 10. 1 is the easiest, 10 is the hardest");
   console.log(difficultyLevel);
 })
-
 
 //Randomize category for each column after button is clicked
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "http://www.jservice.io/api/random",
+  url: "http://localhost:3000/api/questions/1",
 
   success: function(json) {
-    randomCategories.splice(0, 0, json[0].category.title);
-    categoryIds.splice(0, 0, json[0].category.id);
-    $(".CategoryOne").html(randomCategories[0]);
-    var catIdOne = categoryIds[0];
+    colOne = json.clues;
+    console.log(colOne);
+    console.log(json.title);
+    console.log(numTimesRandomized);
+    $(".CategoryOne").html(json.title.toString());
   },
   error: function() {
     console.log("Category not assigned");
@@ -75,13 +82,11 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "http://www.jservice.io/api/random",
+  url: "http://localhost:3000/api/questions/2",
 
   success: function(json) {
-    randomCategories.splice(1, 0, json[0].category.title);
-    categoryIds.splice(1, 0, json[0].category.id);
-    $(".CategoryTwo").html(randomCategories[1]);
-    var catIdTwo = categoryIds[1];
+    colTwo = json.clues;
+    $(".CategoryTwo").html(json.title.toString());
   },
   error: function() {
     console.log("Category not assigned");
@@ -89,12 +94,11 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "http://www.jservice.io/api/random",
+  url: "http://localhost:3000/api/questions/3",
 
   success: function(json) {
-    randomCategories.splice(2, 0, json[0].category.title);
-    categoryIds.splice(2, 0, json[0].category.id);
-    $(".CategoryThree").html(randomCategories[2]);
+    colThree = json.clues
+    $(".CategoryThree").html(json.title.toString());
   },
   error: function() {
     console.log("Category not assigned");
@@ -102,12 +106,11 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "http://www.jservice.io/api/random",
+  url: "http://localhost:3000/api/questions/4",
 
   success: function(json) {
-    randomCategories.splice(3, 0, json[0].category.title);
-    categoryIds.splice(3, 0, json[0].category.id);
-    $(".CategoryFour").html(randomCategories[3]);
+    colFour = json.clues;
+    $(".CategoryFour").html(json.title.toString());
   },
   error: function() {
     console.log("Category not assigned");
@@ -115,12 +118,11 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "http://www.jservice.io/api/random",
+  url: "http://localhost:3000/api/questions/5",
 
   success: function(json) {
-    randomCategories.splice(4, 0, json[0].category.title);
-    categoryIds.splice(4, 0, json[0].category.id);
-    $(".CategoryFive").html(randomCategories[4]);
+    colFive = json.clues;
+    $(".CategoryFive").html(json.title.toString());
     console.log(categoryIds);
   },
   error: function() {
@@ -129,1035 +131,786 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 
 //Ensures the question returned is the correct category and value
-function columnOne200Question() {($.ajax({
-    method: "GET",
-    url: "http://www.jservice.io/api/category?id="+categoryIds[0],
-
-    success: function(json) {
-        console.log(json);
+function columnOne200Question() {
         $("section")
           .removeClass("hidden")
-          .html(json.clues[0].question)
+          .html(colOne[0].question)
         $("table").addClass("dissapear");
         $("article").removeClass("hidden");
-        // responsiveVoice.speak(json.clues[0].question.toString());
-        correctAnswer = json.clues[0].answer.toLowerCase();
-        answerWorth = json.clues[0].value;
+        // responsiveVoice.speak(colOne[0].question.toString());
+        correctAnswer = colOne[0].answer.toLowerCase();
+        answerWorth = colOne[0].value;
         if (Math.random() >= .75) {
           $('.multipleChoiceA').html(correctAnswer);
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colOne[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colOne[4].answer.toLowerCase());
         } else if (Math.random() >= .5) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
           $('.multipleChoiceB').html(correctAnswer);
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colOne[3].answer.toLowerCase());
         } else if (Math.random() >= .25) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colOne[2].answer.toLowerCase());
           $('.multipleChoiceC').html(correctAnswer);
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceD').html(colOne[3].answer.toLowerCase());
         } else {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colOne[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
           $('.multipleChoiceD').html(correctAnswer);
         }
-        console.log(categoryIds);
-    },
-    error: function() {
-      console.log("Error. JSON service is temporarily unavailable.");
     }
-  }))};
-function columnOne400Question() {($.ajax({
-      method: "GET",
-      url: "http://www.jservice.io/api/category?id="+categoryIds[0],
-
-      success: function(json) {
-          console.log(json);
+function columnOne400Question() {
           $("section")
             .removeClass("hidden")
-            .html(json.clues[1].question)
+            .html(colOne[1].question)
           $("table").addClass("dissapear");
           $("article").removeClass("hidden");
-          // responsiveVoice.speak(json.clues[1].question.toString());
-          correctAnswer = json.clues[1].answer.toLowerCase();
-          answerWorth = json.clues[1].value;
+          // responsiveVoice.speak(colOne[1].question.toString());
+          correctAnswer = colOne[1].answer.toLowerCase();
+          answerWorth = colOne[1].value;
           if (Math.random() >= .75) {
             $('.multipleChoiceA').html(correctAnswer);
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colOne[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colOne[4].answer.toLowerCase());
           } else if (Math.random() >= .5) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
             $('.multipleChoiceB').html(correctAnswer);
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colOne[3].answer.toLowerCase());
           } else if (Math.random() >= .25) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colOne[2].answer.toLowerCase());
             $('.multipleChoiceC').html(correctAnswer);
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceD').html(colOne[3].answer.toLowerCase());
           } else {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colOne[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
             $('.multipleChoiceD').html(correctAnswer);
           }
-          console.log(categoryIds);
-      },
-      error: function() {
-        console.log("Error. JSON service is temporarily unavailable.");
       }
-    }))};
-function columnOne600Question() {($.ajax({
-          method: "GET",
-          url: "http://www.jservice.io/api/category?id="+categoryIds[0],
-
-          success: function(json) {
-              console.log(json);
+function columnOne600Question() {
               $("section")
                 .removeClass("hidden")
-                .html(json.clues[2].question)
+                .html(colOne[2].question)
               $("table").addClass("dissapear");
               $("article").removeClass("hidden");
-              // responsiveVoice.speak(json.clues[2].question.toString());
-              correctAnswer = json.clues[2].answer.toLowerCase();
-              answerWorth = json.clues[2].value;
+              // responsiveVoice.speak(colOne[2].question.toString());
+              correctAnswer = colOne[2].answer.toLowerCase();
+              answerWorth = colOne[2].value;
               if (Math.random() >= .75) {
                 $('.multipleChoiceA').html(correctAnswer);
-                $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-                $('.multipleChoiceC').html(json.clues[1].answer.toLowerCase());
-                $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+                $('.multipleChoiceB').html(colOne[3].answer.toLowerCase());
+                $('.multipleChoiceC').html(colOne[1].answer.toLowerCase());
+                $('.multipleChoiceD').html(colOne[4].answer.toLowerCase());
               } else if (Math.random() >= .5) {
-                $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+                $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
                 $('.multipleChoiceB').html(correctAnswer);
-                $('.multipleChoiceC').html(json.clues[1].answer.toLowerCase());
-                $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+                $('.multipleChoiceC').html(colOne[1].answer.toLowerCase());
+                $('.multipleChoiceD').html(colOne[3].answer.toLowerCase());
               } else if (Math.random() >= .25) {
-                $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-                $('.multipleChoiceB').html(json.clues[1].answer.toLowerCase());
+                $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
+                $('.multipleChoiceB').html(colOne[1].answer.toLowerCase());
                 $('.multipleChoiceC').html(correctAnswer);
-                $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+                $('.multipleChoiceD').html(colOne[3].answer.toLowerCase());
               } else {
-                $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-                $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-                $('.multipleChoiceC').html(json.clues[1].answer.toLowerCase());
+                $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
+                $('.multipleChoiceB').html(colOne[3].answer.toLowerCase());
+                $('.multipleChoiceC').html(colOne[1].answer.toLowerCase());
                 $('.multipleChoiceD').html(correctAnswer);
               }
-              console.log(categoryIds);
-          },
-          error: function() {
-            console.log("Error. JSON service is temporarily unavailable.");
           }
-        }))};
-function columnOne800Question() {($.ajax({
-        method: "GET",
-        url: "http://www.jservice.io/api/category?id="+categoryIds[0],
-
-        success: function(json) {
-            console.log(json);
+function columnOne800Question() {
             $("section")
               .removeClass("hidden")
-              .html(json.clues[3].question)
+              .html(colOne[3].question)
             $("table").addClass("dissapear");
             $("article").removeClass("hidden");
-            // responsiveVoice.speak(json.clues[3].question.toString());
-            correctAnswer = json.clues[3].answer.toLowerCase();
-            answerWorth = json.clues[3].value;
+            // responsiveVoice.speak(colOne[3].question.toString());
+            correctAnswer = colOne[3].answer.toLowerCase();
+            answerWorth = colOne[3].value;
             if (Math.random() >= .75) {
               $('.multipleChoiceA').html(correctAnswer);
-              $('.multipleChoiceB').html(json.clues[1].answer.toLowerCase());
-              $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-              $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+              $('.multipleChoiceB').html(colOne[1].answer.toLowerCase());
+              $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
+              $('.multipleChoiceD').html(colOne[4].answer.toLowerCase());
             } else if (Math.random() >= .5) {
-              $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+              $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
               $('.multipleChoiceB').html(correctAnswer);
-              $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-              $('.multipleChoiceD').html(json.clues[1].answer.toLowerCase());
+              $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
+              $('.multipleChoiceD').html(colOne[1].answer.toLowerCase());
             } else if (Math.random() >= .25) {
-              $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-              $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+              $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
+              $('.multipleChoiceB').html(colOne[2].answer.toLowerCase());
               $('.multipleChoiceC').html(correctAnswer);
-              $('.multipleChoiceD').html(json.clues[5].answer.toLowerCase());
+              $('.multipleChoiceD').html(colOne[5].answer.toLowerCase());
             } else {
-              $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-              $('.multipleChoiceB').html(json.clues[1].answer.toLowerCase());
-              $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+              $('.multipleChoiceA').html(colOne[4].answer.toLowerCase());
+              $('.multipleChoiceB').html(colOne[1].answer.toLowerCase());
+              $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
               $('.multipleChoiceD').html(correctAnswer);
             }
-            console.log(categoryIds);
-        },
-        error: function() {
-          console.log("Error. JSON service is temporarily unavailable.");
         }
-      }))};
-function columnOne1000Question() {($.ajax({
-    method: "GET",
-    url: "http://www.jservice.io/api/category?id="+categoryIds[0],
-
-    success: function(json) {
-        console.log(json);
+function columnOne1000Question() {
         $("section")
           .removeClass("hidden")
-          .html(json.clues[4].question)
+          .html(colOne[4].question)
         $("table").addClass("dissapear");
         $("article").removeClass("hidden");
-        // responsiveVoice.speak(json.clues[4].question.toString());
-        correctAnswer = json.clues[4].answer.toLowerCase();
-        answerWorth = json.clues[4].value;
+        // responsiveVoice.speak(colOne[4].question.toString());
+        correctAnswer = colOne[4].answer.toLowerCase();
+        answerWorth = colOne[4].value;
         if (Math.random() >= .75) {
           $('.multipleChoiceA').html(correctAnswer);
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[1].answer.toLowerCase());
+          $('.multipleChoiceB').html(colOne[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colOne[1].answer.toLowerCase());
         } else if (Math.random() >= .5) {
-          $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
+          $('.multipleChoiceA').html(colOne[1].answer.toLowerCase());
           $('.multipleChoiceB').html(correctAnswer);
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colOne[3].answer.toLowerCase());
         } else if (Math.random() >= .25) {
-          $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colOne[1].answer.toLowerCase());
+          $('.multipleChoiceB').html(colOne[2].answer.toLowerCase());
           $('.multipleChoiceC').html(correctAnswer);
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceD').html(colOne[3].answer.toLowerCase());
         } else {
-          $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colOne[1].answer.toLowerCase());
+          $('.multipleChoiceB').html(colOne[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colOne[2].answer.toLowerCase());
           $('.multipleChoiceD').html(correctAnswer);
         }
-        console.log(categoryIds);
-    },
-    error: function() {
-      console.log("Error. JSON service is temporarily unavailable.");
     }
-  }))};
 
-function columnTwo200Question() {($.ajax({
-      method: "GET",
-      url: "http://www.jservice.io/api/category?id="+categoryIds[1],
-
-      success: function(json) {
-          console.log(json);
+function columnTwo200Question() {
           $("section")
             .removeClass("hidden")
-            .html(json.clues[0].question)
+            .html(colTwo[0].question)
           $("table").addClass("dissapear");
-          // responsiveVoice.speak(json.clues[0].question.toString());
-          correctAnswer = json.clues[0].answer.toLowerCase();
-          answerWorth = json.clues[0].value;
+          // responsiveVoice.speak(colTwo[0].question.toString());
+          correctAnswer = colTwo[0].answer.toLowerCase();
+          answerWorth = colTwo[0].value;
           $("article").removeClass("hidden");
           if (Math.random() >= .75) {
             $('.multipleChoiceA').html(correctAnswer);
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colTwo[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colTwo[4].answer.toLowerCase());
           } else if (Math.random() >= .5) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
             $('.multipleChoiceB').html(correctAnswer);
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colTwo[3].answer.toLowerCase());
           } else if (Math.random() >= .25) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colTwo[2].answer.toLowerCase());
             $('.multipleChoiceC').html(correctAnswer);
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceD').html(colTwo[3].answer.toLowerCase());
           } else {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colTwo[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
             $('.multipleChoiceD').html(correctAnswer);
           }
-          console.log(categoryIds);
-      },
-      error: function() {
-        console.log("Error. JSON service is temporarily unavailable.");
       }
-    }))};
-function columnTwo400Question() {($.ajax({
-          method: "GET",
-          url: "http://www.jservice.io/api/category?id="+categoryIds[1],
-
-          success: function(json) {
-              console.log(json);
+function columnTwo400Question() {
               $("section")
                 .removeClass("hidden")
-                .html(json.clues[1].question)
+                .html(colTwo[1].question)
               $("table").addClass("dissapear");
-              // responsiveVoice.speak(json.clues[1].question.toString());
-              correctAnswer = json.clues[1].answer.toLowerCase();
-              answerWorth = json.clues[1].value;
+              // responsiveVoice.speak(colTwo[1].question.toString());
+              correctAnswer = colTwo[1].answer.toLowerCase();
+              answerWorth = colTwo[1].value;
               $("article").removeClass("hidden");
               if (Math.random() >= .75) {
                 $('.multipleChoiceA').html(correctAnswer);
-                $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-                $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-                $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+                $('.multipleChoiceB').html(colTwo[3].answer.toLowerCase());
+                $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
+                $('.multipleChoiceD').html(colTwo[4].answer.toLowerCase());
               } else if (Math.random() >= .5) {
-                $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+                $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
                 $('.multipleChoiceB').html(correctAnswer);
-                $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-                $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+                $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
+                $('.multipleChoiceD').html(colTwo[3].answer.toLowerCase());
               } else if (Math.random() >= .25) {
-                $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-                $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+                $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
+                $('.multipleChoiceB').html(colTwo[2].answer.toLowerCase());
                 $('.multipleChoiceC').html(correctAnswer);
-                $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+                $('.multipleChoiceD').html(colTwo[3].answer.toLowerCase());
               } else {
-                $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-                $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-                $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+                $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
+                $('.multipleChoiceB').html(colTwo[3].answer.toLowerCase());
+                $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
                 $('.multipleChoiceD').html(correctAnswer);
               }
-              console.log(categoryIds);
-          },
-          error: function() {
-            console.log("Error. JSON service is temporarily unavailable.");
           }
-        }))};
-function columnTwo600Question() {($.ajax({
-              method: "GET",
-              url: "http://www.jservice.io/api/category?id="+categoryIds[1],
-
-              success: function(json) {
-                  console.log(json);
+function columnTwo600Question() {
                   $("section")
                     .removeClass("hidden")
-                    .html(json.clues[2].question)
+                    .html(colTwo[2].question)
                   $("table").addClass("dissapear");
-                  // responsiveVoice.speak(json.clues[2].question.toString());
-                  correctAnswer = json.clues[2].answer.toLowerCase();
-                  answerWorth = json.clues[2].value;
+                  // responsiveVoice.speak(colTwo[2].question.toString());
+                  correctAnswer = colTwo[2].answer.toLowerCase();
+                  answerWorth = colTwo[2].value;
                   $("article").removeClass("hidden");
                   if (Math.random() >= .75) {
                     $('.multipleChoiceA').html(correctAnswer);
-                    $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-                    $('.multipleChoiceC').html(json.clues[0].answer.toLowerCase());
-                    $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+                    $('.multipleChoiceB').html(colTwo[3].answer.toLowerCase());
+                    $('.multipleChoiceC').html(colTwo[0].answer.toLowerCase());
+                    $('.multipleChoiceD').html(colTwo[4].answer.toLowerCase());
                   } else if (Math.random() >= .5) {
-                    $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+                    $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
                     $('.multipleChoiceB').html(correctAnswer);
-                    $('.multipleChoiceC').html(json.clues[0].answer.toLowerCase());
-                    $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+                    $('.multipleChoiceC').html(colTwo[0].answer.toLowerCase());
+                    $('.multipleChoiceD').html(colTwo[3].answer.toLowerCase());
                   } else if (Math.random() >= .25) {
-                    $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-                    $('.multipleChoiceB').html(json.clues[0].answer.toLowerCase());
+                    $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
+                    $('.multipleChoiceB').html(colTwo[0].answer.toLowerCase());
                     $('.multipleChoiceC').html(correctAnswer);
-                    $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+                    $('.multipleChoiceD').html(colTwo[3].answer.toLowerCase());
                   } else {
-                    $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-                    $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-                    $('.multipleChoiceC').html(json.clues[0].answer.toLowerCase());
+                    $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
+                    $('.multipleChoiceB').html(colTwo[3].answer.toLowerCase());
+                    $('.multipleChoiceC').html(colTwo[0].answer.toLowerCase());
                     $('.multipleChoiceD').html(correctAnswer);
                   }
-                  console.log(categoryIds);
-              },
-              error: function() {
-                console.log("Error. JSON service is temporarily unavailable.");
               }
-            }))};
-function columnTwo800Question() {($.ajax({
-                          method: "GET",
-                          url: "http://www.jservice.io/api/category?id="+categoryIds[1],
-
-                          success: function(json) {
-                              console.log(json);
+function columnTwo800Question() {
                               $("section")
                                 .removeClass("hidden")
-                                .html(json.clues[3].question)
+                                .html(colTwo[3].question)
                               $("table").addClass("dissapear");
-                              // responsiveVoice.speak(json.clues[3].question.toString());
-                              correctAnswer = json.clues[3].answer.toLowerCase();
-                              answerWorth = json.clues[3].value;
+                              // responsiveVoice.speak(colTwo[3].question.toString());
+                              correctAnswer = colTwo[3].answer.toLowerCase();
+                              answerWorth = colTwo[3].value;
                               $("article").removeClass("hidden");
                               if (Math.random() >= .75) {
                                 $('.multipleChoiceA').html(correctAnswer);
-                                $('.multipleChoiceB').html(json.clues[1].answer.toLowerCase());
-                                $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-                                $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+                                $('.multipleChoiceB').html(colTwo[1].answer.toLowerCase());
+                                $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
+                                $('.multipleChoiceD').html(colTwo[4].answer.toLowerCase());
                               } else if (Math.random() >= .5) {
-                                $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+                                $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
                                 $('.multipleChoiceB').html(correctAnswer);
-                                $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-                                $('.multipleChoiceD').html(json.clues[1].answer.toLowerCase());
+                                $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
+                                $('.multipleChoiceD').html(colTwo[1].answer.toLowerCase());
                               } else if (Math.random() >= .25) {
-                                $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-                                $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+                                $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
+                                $('.multipleChoiceB').html(colTwo[2].answer.toLowerCase());
                                 $('.multipleChoiceC').html(correctAnswer);
-                                $('.multipleChoiceD').html(json.clues[1].answer.toLowerCase());
+                                $('.multipleChoiceD').html(colTwo[1].answer.toLowerCase());
                               } else {
-                                $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-                                $('.multipleChoiceB').html(json.clues[1].answer.toLowerCase());
-                                $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+                                $('.multipleChoiceA').html(colTwo[4].answer.toLowerCase());
+                                $('.multipleChoiceB').html(colTwo[1].answer.toLowerCase());
+                                $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
                                 $('.multipleChoiceD').html(correctAnswer);
                               }
-                              console.log(categoryIds);
-                          },
-                          error: function() {
-                            console.log("Error. JSON service is temporarily unavailable.");
                           }
-                        }))};
-function columnTwo1000Question() {($.ajax({
-          method: "GET",
-          url: "http://www.jservice.io/api/category?id="+categoryIds[1],
-
-          success: function(json) {
-              console.log(json);
+function columnTwo1000Question() {
               $("section")
                 .removeClass("hidden")
-                .html(json.clues[4].question)
+                .html(colTwo[4].question)
               $("table").addClass("dissapear");
-              // responsiveVoice.speak(json.clues[4].question.toString());
-              correctAnswer = json.clues[4].answer.toLowerCase();
-              answerWorth = json.clues[4].value;
+              // responsiveVoice.speak(colTwo[4].question.toString());
+              correctAnswer = colTwo[4].answer.toLowerCase();
+              answerWorth = colTwo[4].value;
               $("article").removeClass("hidden");
               if (Math.random() >= .75) {
                 $('.multipleChoiceA').html(correctAnswer);
-                $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-                $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-                $('.multipleChoiceD').html(json.clues[0].answer.toLowerCase());
+                $('.multipleChoiceB').html(colTwo[3].answer.toLowerCase());
+                $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
+                $('.multipleChoiceD').html(colTwo[0].answer.toLowerCase());
               } else if (Math.random() >= .5) {
-                $('.multipleChoiceA').html(json.clues[0].answer.toLowerCase());
+                $('.multipleChoiceA').html(colTwo[0].answer.toLowerCase());
                 $('.multipleChoiceB').html(correctAnswer);
-                $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-                $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+                $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
+                $('.multipleChoiceD').html(colTwo[3].answer.toLowerCase());
               } else if (Math.random() >= .25) {
-                $('.multipleChoiceA').html(json.clues[0].answer.toLowerCase());
-                $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+                $('.multipleChoiceA').html(colTwo[0].answer.toLowerCase());
+                $('.multipleChoiceB').html(colTwo[2].answer.toLowerCase());
                 $('.multipleChoiceC').html(correctAnswer);
-                $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+                $('.multipleChoiceD').html(colTwo[3].answer.toLowerCase());
               } else {
-                $('.multipleChoiceA').html(json.clues[0].answer.toLowerCase());
-                $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-                $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+                $('.multipleChoiceA').html(colTwo[0].answer.toLowerCase());
+                $('.multipleChoiceB').html(colTwo[3].answer.toLowerCase());
+                $('.multipleChoiceC').html(colTwo[2].answer.toLowerCase());
                 $('.multipleChoiceD').html(correctAnswer);
               }
-              console.log(categoryIds);
-          },
-          error: function() {
-            console.log("Error. JSON service is temporarily unavailable.");
           }
-        }))};
 
-function columnThree200Question() {($.ajax({
-    method: "GET",
-    url: "http://www.jservice.io/api/category?id="+categoryIds[2],
-
-    success: function(json) {
-        console.log(json);
+function columnThree200Question() {
         $("section")
           .removeClass("hidden")
-          .html(json.clues[0].question)
+          .html(colThree[0].question)
         $("table").addClass("dissapear");
-        // responsiveVoice.speak(json.clues[0].question.toString());
-        correctAnswer = json.clues[0].answer.toLowerCase();
-        answerWorth = json.clues[0].value;
+        // responsiveVoice.speak(colThree[0].question.toString());
+        correctAnswer = colThree[0].answer.toLowerCase();
+        answerWorth = colThree[0].value;
         $("article").removeClass("hidden");
         if (Math.random() >= .75) {
           $('.multipleChoiceA').html(correctAnswer);
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colThree[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colThree[4].answer.toLowerCase());
         } else if (Math.random() >= .5) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
           $('.multipleChoiceB').html(correctAnswer);
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colThree[3].answer.toLowerCase());
         } else if (Math.random() >= .25) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colThree[2].answer.toLowerCase());
           $('.multipleChoiceC').html(correctAnswer);
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceD').html(colThree[3].answer.toLowerCase());
         } else {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colThree[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
           $('.multipleChoiceD').html(correctAnswer);
         }
-        console.log(categoryIds);
-    },
-    error: function() {
-      console.log("Error. JSON service is temporarily unavailable.");
     }
-  }))};
-function columnThree400Question() {($.ajax({
-      method: "GET",
-      url: "http://www.jservice.io/api/category?id="+categoryIds[2],
-
-      success: function(json) {
-          console.log(json);
+function columnThree400Question() {
           $("section")
             .removeClass("hidden")
-            .html(json.clues[1].question)
+            .html(colThree[1].question)
           $("table").addClass("dissapear");
-          // responsiveVoice.speak(json.clues[1].question.toString());
-          correctAnswer = json.clues[1].answer.toLowerCase();
-          answerWorth = json.clues[1].value;
+          // responsiveVoice.speak(colThree[1].question.toString());
+          correctAnswer = colThree[1].answer.toLowerCase();
+          answerWorth = colThree[1].value;
           $("article").removeClass("hidden");
           if (Math.random() >= .75) {
             $('.multipleChoiceA').html(correctAnswer);
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colThree[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colThree[4].answer.toLowerCase());
           } else if (Math.random() >= .5) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
             $('.multipleChoiceB').html(correctAnswer);
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colThree[3].answer.toLowerCase());
           } else if (Math.random() >= .25) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colThree[2].answer.toLowerCase());
             $('.multipleChoiceC').html(correctAnswer);
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceD').html(colThree[3].answer.toLowerCase());
           } else {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colThree[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
             $('.multipleChoiceD').html(correctAnswer);
           }
-          console.log(categoryIds);
-      },
-      error: function() {
-        console.log("Error. JSON service is temporarily unavailable.");
       }
-    }))};
-function columnThree600Question() {($.ajax({
-      method: "GET",
-      url: "http://www.jservice.io/api/category?id="+categoryIds[2],
-
-      success: function(json) {
-          console.log(json);
+function columnThree600Question() {
           $("section")
             .removeClass("hidden")
-            .html(json.clues[2].question)
+            .html(colThree[2].question)
           $("table").addClass("dissapear");
-          // responsiveVoice.speak(json.clues[2].question.toString());
-          correctAnswer = json.clues[2].answer.toLowerCase();
-          answerWorth = json.clues[2].value;
+          // responsiveVoice.speak(colThree[2].question.toString());
+          correctAnswer = colThree[2].answer.toLowerCase();
+          answerWorth = colThree[2].value;
           $("article").removeClass("hidden");
           if (Math.random() >= .75) {
             $('.multipleChoiceA').html(correctAnswer);
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[0].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colThree[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colThree[0].answer.toLowerCase());
+            $('.multipleChoiceD').html(colThree[4].answer.toLowerCase());
           } else if (Math.random() >= .5) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
             $('.multipleChoiceB').html(correctAnswer);
-            $('.multipleChoiceC').html(json.clues[0].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colThree[0].answer.toLowerCase());
+            $('.multipleChoiceD').html(colThree[3].answer.toLowerCase());
           } else if (Math.random() >= .25) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[0].answer.toLowerCase());
+            $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colThree[0].answer.toLowerCase());
             $('.multipleChoiceC').html(correctAnswer);
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceD').html(colThree[3].answer.toLowerCase());
           } else {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[0].answer.toLowerCase());
+            $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colThree[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colThree[0].answer.toLowerCase());
             $('.multipleChoiceD').html(correctAnswer);
           }
-          console.log(categoryIds);
-      },
-      error: function() {
-        console.log("Error. JSON service is temporarily unavailable.");
       }
-    }))};
-function columnThree800Question() {($.ajax({
-      method: "GET",
-      url: "http://www.jservice.io/api/category?id="+categoryIds[2],
-
-      success: function(json) {
-          console.log(json);
+function columnThree800Question() {
           $("section")
             .removeClass("hidden")
-            .html(json.clues[3].question)
+            .html(colThree[3].question)
           $("table").addClass("dissapear");
-          // responsiveVoice.speak(json.clues[3].question.toString());
-          correctAnswer = json.clues[3].answer.toLowerCase();
-          answerWorth = json.clues[3].value;
+          // responsiveVoice.speak(colThree[3].question.toString());
+          correctAnswer = colThree[3].answer.toLowerCase();
+          answerWorth = colThree[3].value;
           $("article").removeClass("hidden");
           if (Math.random() >= .75) {
             $('.multipleChoiceA').html(correctAnswer);
-            $('.multipleChoiceB').html(json.clues[0].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colThree[0].answer.toLowerCase());
+            $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colThree[4].answer.toLowerCase());
           } else if (Math.random() >= .5) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
             $('.multipleChoiceB').html(correctAnswer);
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[0].answer.toLowerCase());
+            $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colThree[0].answer.toLowerCase());
           } else if (Math.random() >= .25) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colThree[2].answer.toLowerCase());
             $('.multipleChoiceC').html(correctAnswer);
-            $('.multipleChoiceD').html(json.clues[0].answer.toLowerCase());
+            $('.multipleChoiceD').html(colThree[0].answer.toLowerCase());
           } else {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[0].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colThree[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colThree[0].answer.toLowerCase());
+            $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
             $('.multipleChoiceD').html(correctAnswer);
           }
-          console.log(categoryIds);
-      },
-      error: function() {
-        console.log("Error. JSON service is temporarily unavailable.");
       }
-    }))};
-function columnThree1000Question() {($.ajax({
-    method: "GET",
-    url: "http://www.jservice.io/api/category?id="+categoryIds[2],
-
-    success: function(json) {
-        console.log(json);
+function columnThree1000Question() {
         $("section")
           .removeClass("hidden")
-          .html(json.clues[4].question)
+          .html(colThree[4].question)
         $("table").addClass("dissapear");
-        // responsiveVoice.speak(json.clues[4].question.toString());
-        correctAnswer = json.clues[4].answer.toLowerCase();
-        answerWorth = json.clues[4].value;
+        // responsiveVoice.speak(colThree[4].question.toString());
+        correctAnswer = colThree[4].answer.toLowerCase();
+        answerWorth = colThree[4].value;
         $("article").removeClass("hidden");
         if (Math.random() >= .75) {
           $('.multipleChoiceA').html(correctAnswer);
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[1].answer.toLowerCase());
+          $('.multipleChoiceB').html(colThree[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colThree[1].answer.toLowerCase());
         } else if (Math.random() >= .5) {
-          $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
+          $('.multipleChoiceA').html(colThree[1].answer.toLowerCase());
           $('.multipleChoiceB').html(correctAnswer);
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colThree[3].answer.toLowerCase());
         } else if (Math.random() >= .25) {
-          $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colThree[1].answer.toLowerCase());
+          $('.multipleChoiceB').html(colThree[2].answer.toLowerCase());
           $('.multipleChoiceC').html(correctAnswer);
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceD').html(colThree[3].answer.toLowerCase());
         } else {
-          $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colThree[1].answer.toLowerCase());
+          $('.multipleChoiceB').html(colThree[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colThree[2].answer.toLowerCase());
           $('.multipleChoiceD').html(correctAnswer);
         }
-        console.log(categoryIds);
-    },
-    error: function() {
-      console.log("Error. JSON service is temporarily unavailable.");
     }
-  }))};
 
-function columnFour200Question() {($.ajax({
-              method: "GET",
-              url: "http://www.jservice.io/api/category?id="+categoryIds[3],
-
-              success: function(json) {
-                  console.log(json);
+function columnFour200Question() {
                   $("section")
                     .removeClass("hidden")
-                    .html(json.clues[0].question)
+                    .html(colFour[0].question)
                   $("table").addClass("dissapear");
-                  // responsiveVoice.speak(json.clues[0].question.toString());
-                  correctAnswer = json.clues[0].answer.toLowerCase();
-                  answerWorth = json.clues[0].value;
+                  // responsiveVoice.speak(colFour[0].question.toString());
+                  correctAnswer = colFour[0].answer.toLowerCase();
+                  answerWorth = colFour[0].value;
                   $("article").removeClass("hidden");
                   if (Math.random() >= .75) {
                     $('.multipleChoiceA').html(correctAnswer);
-                    $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-                    $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-                    $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+                    $('.multipleChoiceB').html(colFour[3].answer.toLowerCase());
+                    $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
+                    $('.multipleChoiceD').html(colFour[4].answer.toLowerCase());
                   } else if (Math.random() >= .5) {
-                    $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+                    $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
                     $('.multipleChoiceB').html(correctAnswer);
-                    $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-                    $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+                    $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
+                    $('.multipleChoiceD').html(colFour[3].answer.toLowerCase());
                   } else if (Math.random() >= .25) {
-                    $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-                    $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+                    $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
+                    $('.multipleChoiceB').html(colFour[2].answer.toLowerCase());
                     $('.multipleChoiceC').html(correctAnswer);
-                    $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+                    $('.multipleChoiceD').html(colFour[3].answer.toLowerCase());
                   } else {
-                    $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-                    $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-                    $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+                    $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
+                    $('.multipleChoiceB').html(colFour[3].answer.toLowerCase());
+                    $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
                     $('.multipleChoiceD').html(correctAnswer);
                   }
                   console.log(categoryIds);
-              },
-              error: function() {
-                console.log("Error. JSON service is temporarily unavailable.");
               }
-            }))};
-function columnFour400Question() {($.ajax({
-    method: "GET",
-    url: "http://www.jservice.io/api/category?id="+categoryIds[3],
-
-    success: function(json) {
-        console.log(json);
+function columnFour400Question() {
         $("section")
           .removeClass("hidden")
-          .html(json.clues[1].question)
+          .html(colFour[1].question)
         $("table").addClass("dissapear");
-        // responsiveVoice.speak(json.clues[1].question.toString());
-        correctAnswer = json.clues[1].answer.toLowerCase();
-        answerWorth = json.clues[1].value;
+        // responsiveVoice.speak(colFour[1].question.toString());
+        correctAnswer = colFour[1].answer.toLowerCase();
+        answerWorth = colFour[1].value;
         $("article").removeClass("hidden");
         if (Math.random() >= .75) {
           $('.multipleChoiceA').html(correctAnswer);
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFour[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFour[4].answer.toLowerCase());
         } else if (Math.random() >= .5) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
           $('.multipleChoiceB').html(correctAnswer);
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFour[3].answer.toLowerCase());
         } else if (Math.random() >= .25) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFour[2].answer.toLowerCase());
           $('.multipleChoiceC').html(correctAnswer);
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFour[3].answer.toLowerCase());
         } else {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFour[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
           $('.multipleChoiceD').html(correctAnswer);
         }
-        console.log(categoryIds);
-    },
-    error: function() {
-      console.log("Error. JSON service is temporarily unavailable.");
     }
-  }))};
-function columnFour600Question() {($.ajax({
-        method: "GET",
-        url: "http://www.jservice.io/api/category?id="+categoryIds[3],
-
-        success: function(json) {
-            console.log(json);
+function columnFour600Question() {
             $("section")
               .removeClass("hidden")
-              .html(json.clues[2].question)
+              .html(colFour[2].question)
             $("table").addClass("dissapear");
-            // responsiveVoice.speak(json.clues[2].question.toString());
-            correctAnswer = json.clues[2].answer.toLowerCase();
-            answerWorth = json.clues[2].value;
+            // responsiveVoice.speak(colFour[2].question.toString());
+            correctAnswer = colFour[2].answer.toLowerCase();
+            answerWorth = colFour[2].value;
             $("article").removeClass("hidden");
             if (Math.random() >= .75) {
               $('.multipleChoiceA').html(correctAnswer);
-              $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-              $('.multipleChoiceC').html(json.clues[0].answer.toLowerCase());
-              $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+              $('.multipleChoiceB').html(colFour[3].answer.toLowerCase());
+              $('.multipleChoiceC').html(colFour[0].answer.toLowerCase());
+              $('.multipleChoiceD').html(colFour[4].answer.toLowerCase());
             } else if (Math.random() >= .5) {
-              $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+              $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
               $('.multipleChoiceB').html(correctAnswer);
-              $('.multipleChoiceC').html(json.clues[0].answer.toLowerCase());
-              $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+              $('.multipleChoiceC').html(colFour[0].answer.toLowerCase());
+              $('.multipleChoiceD').html(colFour[3].answer.toLowerCase());
             } else if (Math.random() >= .25) {
-              $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-              $('.multipleChoiceB').html(json.clues[0].answer.toLowerCase());
+              $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
+              $('.multipleChoiceB').html(colFour[0].answer.toLowerCase());
               $('.multipleChoiceC').html(correctAnswer);
-              $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+              $('.multipleChoiceD').html(colFour[3].answer.toLowerCase());
             } else {
-              $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-              $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-              $('.multipleChoiceC').html(json.clues[0].answer.toLowerCase());
+              $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
+              $('.multipleChoiceB').html(colFour[3].answer.toLowerCase());
+              $('.multipleChoiceC').html(colFour[0].answer.toLowerCase());
               $('.multipleChoiceD').html(correctAnswer);
             }
-            console.log(categoryIds);
-        },
-        error: function() {
-          console.log("Error. JSON service is temporarily unavailable.");
         }
-      }))};
-function columnFour800Question() {($.ajax({
-    method: "GET",
-    url: "http://www.jservice.io/api/category?id="+categoryIds[3],
-
-    success: function(json) {
-        console.log(json);
+function columnFour800Question() {
         $("section")
           .removeClass("hidden")
-          .html(json.clues[3].question)
+          .html(colFour[3].question)
         $("table").addClass("dissapear");
-        // responsiveVoice.speak(json.clues[3].question.toString());
-        correctAnswer = json.clues[3].answer.toLowerCase();
-        answerWorth = json.clues[3].value;
+        // responsiveVoice.speak(colFour[3].question.toString());
+        correctAnswer = colFour[3].answer.toLowerCase();
+        answerWorth = colFour[3].value;
         $("article").removeClass("hidden");
         if (Math.random() >= .75) {
           $('.multipleChoiceA').html(correctAnswer);
-          $('.multipleChoiceB').html(json.clues[1].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFour[1].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFour[4].answer.toLowerCase());
         } else if (Math.random() >= .5) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
           $('.multipleChoiceB').html(correctAnswer);
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[1].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFour[1].answer.toLowerCase());
         } else if (Math.random() >= .25) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFour[2].answer.toLowerCase());
           $('.multipleChoiceC').html(correctAnswer);
-          $('.multipleChoiceD').html(json.clues[1].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFour[1].answer.toLowerCase());
         } else {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[1].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFour[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFour[1].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
           $('.multipleChoiceD').html(correctAnswer);
         }
-        console.log(categoryIds);
-    },
-    error: function() {
-      console.log("Error. JSON service is temporarily unavailable.");
     }
-  }))};
-function columnFour1000Question() {($.ajax({
-      method: "GET",
-      url: "http://www.jservice.io/api/category?id="+categoryIds[3],
-
-    success: function(json) {
-        console.log(json);
+function columnFour1000Question() {
         $("section")
           .removeClass("hidden")
-          .html(json.clues[4].question)
+          .html(colFour[4].question)
         $("table").addClass("dissapear");
-        // responsiveVoice.speak(json.clues[4].question.toString());
-        correctAnswer = json.clues[4].answer.toLowerCase();
-        answerWorth = json.clues[4].value;
+        // responsiveVoice.speak(colFour[4].question.toString());
+        correctAnswer = colFour[4].answer.toLowerCase();
+        answerWorth = colFour[4].value;
         $("article").removeClass("hidden");
         if (Math.random() >= .75) {
           $('.multipleChoiceA').html(correctAnswer);
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[1].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFour[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFour[1].answer.toLowerCase());
         } else if (Math.random() >= .5) {
-          $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFour[1].answer.toLowerCase());
           $('.multipleChoiceB').html(correctAnswer);
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFour[3].answer.toLowerCase());
         } else if (Math.random() >= .25) {
-          $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFour[1].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFour[2].answer.toLowerCase());
           $('.multipleChoiceC').html(correctAnswer);
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFour[3].answer.toLowerCase());
         } else {
-          $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFour[1].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFour[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFour[2].answer.toLowerCase());
           $('.multipleChoiceD').html(correctAnswer);
         }
-        console.log(categoryIds);
-    },
-    error: function() {
-      console.log("Error. JSON service is temporarily unavailable.");
     }
-  }))};
 
-function columnFive200Question() {($.ajax({
-    method: "GET",
-    url: "http://www.jservice.io/api/category?id="+categoryIds[4],
-
-    success: function(json) {
-        console.log(json);
+function columnFive200Question() {
         $("section")
           .removeClass("hidden")
-          .html(json.clues[0].question)
+          .html(colFive[0].question)
         $("table").addClass("dissapear");
-        // responsiveVoice.speak(json.clues[0].question.toString());
-        correctAnswer = json.clues[0].answer.toLowerCase();
-        answerWorth = json.clues[0].value;
+        // responsiveVoice.speak(colFive[0].question.toString());
+        correctAnswer = colFive[0].answer.toLowerCase();
+        answerWorth = colFive[0].value;
         $("article").removeClass("hidden");
         if (Math.random() >= .75) {
           $('.multipleChoiceA').html(correctAnswer);
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFive[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFive[4].answer.toLowerCase());
         } else if (Math.random() >= .5) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
           $('.multipleChoiceB').html(correctAnswer);
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFive[3].answer.toLowerCase());
         } else if (Math.random() >= .25) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFive[2].answer.toLowerCase());
           $('.multipleChoiceC').html(correctAnswer);
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFive[3].answer.toLowerCase());
         } else {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFive[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
           $('.multipleChoiceD').html(correctAnswer);
         }
-        console.log(categoryIds);
-    },
-    error: function() {
-      console.log("Error. JSON service is temporarily unavailable.");
     }
-  }))};
-function columnFive400Question() {($.ajax({
-      method: "GET",
-      url: "http://www.jservice.io/api/category?id="+categoryIds[4],
-
-      success: function(json) {
-          console.log(json);
+function columnFive400Question() {
           $("section")
             .removeClass("hidden")
-            .html(json.clues[1].question)
+            .html(colFive[1].question)
           $("table").addClass("dissapear");
-          // responsiveVoice.speak(json.clues[1].question.toString());
-          correctAnswer = json.clues[1].answer.toLowerCase();
-          answerWorth = json.clues[1].value;
+          // responsiveVoice.speak(colFive[1].question.toString());
+          correctAnswer = colFive[1].answer.toLowerCase();
+          answerWorth = colFive[1].value;
           $("article").removeClass("hidden");
           if (Math.random() >= .75) {
             $('.multipleChoiceA').html(correctAnswer);
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colFive[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colFive[4].answer.toLowerCase());
           } else if (Math.random() >= .5) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+            $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
             $('.multipleChoiceB').html(correctAnswer);
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colFive[3].answer.toLowerCase());
           } else if (Math.random() >= .25) {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colFive[2].answer.toLowerCase());
             $('.multipleChoiceC').html(correctAnswer);
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceD').html(colFive[3].answer.toLowerCase());
           } else {
-            $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
+            $('.multipleChoiceB').html(colFive[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
             $('.multipleChoiceD').html(correctAnswer);
           }
-          console.log(categoryIds);
-      },
-      error: function() {
-        console.log("Error. JSON service is temporarily unavailable.");
       }
-    }))};
-function columnFive600Question() {($.ajax({
-      method: "GET",
-      url: "http://www.jservice.io/api/category?id="+categoryIds[4],
-
-      success: function(json) {
-        console.log(json);
+function columnFive600Question() {
         $("section")
         .removeClass("hidden")
-        .html(json.clues[2].question)
+        .html(colFive[2].question)
         $("table").addClass("dissapear");
-        // responsiveVoice.speak(json.clues[2].question.toString());
-        correctAnswer = json.clues[2].answer.toLowerCase();
-        answerWorth = json.clues[2].value;
+        // responsiveVoice.speak(colFive[2].question.toString());
+        correctAnswer = colFive[2].answer.toLowerCase();
+        answerWorth = colFive[2].value;
         $("article").removeClass("hidden");
         if (Math.random() >= .75) {
           $('.multipleChoiceA').html(correctAnswer);
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[1].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFive[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFive[1].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFive[4].answer.toLowerCase());
         } else if (Math.random() >= .5) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
           $('.multipleChoiceB').html(correctAnswer);
-          $('.multipleChoiceC').html(json.clues[1].answer.toLowerCase());
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFive[1].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFive[3].answer.toLowerCase());
         } else if (Math.random() >= .25) {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[1].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFive[1].answer.toLowerCase());
           $('.multipleChoiceC').html(correctAnswer);
-          $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+          $('.multipleChoiceD').html(colFive[3].answer.toLowerCase());
         } else {
-          $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-          $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-          $('.multipleChoiceC').html(json.clues[1].answer.toLowerCase());
+          $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
+          $('.multipleChoiceB').html(colFive[3].answer.toLowerCase());
+          $('.multipleChoiceC').html(colFive[1].answer.toLowerCase());
           $('.multipleChoiceD').html(correctAnswer);
         }
-        console.log(categoryIds);
-      },
-      error: function() {
-        console.log("Error. JSON service is temporarily unavailable.");
       }
-    }))};
-function columnFive800Question() {($.ajax({
-        method: "GET",
-        url: "http://www.jservice.io/api/category?id="+categoryIds[4],
-
-        success: function(json) {
-            console.log(json);
+function columnFive800Question() {
             $("section")
               .removeClass("hidden")
-              .html(json.clues[3].question)
+              .html(colFive[3].question)
             $("table").addClass("dissapear");
-            // responsiveVoice.speak(json.clues[3].question.toString());
-            correctAnswer = json.clues[3].answer.toLowerCase();
-            answerWorth = json.clues[3].value;
+            // responsiveVoice.speak(colFive[3].question.toString());
+            correctAnswer = colFive[3].answer.toLowerCase();
+            answerWorth = colFive[3].value;
             $("article").removeClass("hidden");
             if (Math.random() >= .75) {
               $('.multipleChoiceA').html(correctAnswer);
-              $('.multipleChoiceB').html(json.clues[0].answer.toLowerCase());
-              $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-              $('.multipleChoiceD').html(json.clues[4].answer.toLowerCase());
+              $('.multipleChoiceB').html(colFive[0].answer.toLowerCase());
+              $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
+              $('.multipleChoiceD').html(colFive[4].answer.toLowerCase());
             } else if (Math.random() >= .5) {
-              $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
+              $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
               $('.multipleChoiceB').html(correctAnswer);
-              $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-              $('.multipleChoiceD').html(json.clues[0].answer.toLowerCase());
+              $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
+              $('.multipleChoiceD').html(colFive[0].answer.toLowerCase());
             } else if (Math.random() >= .25) {
-              $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-              $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+              $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
+              $('.multipleChoiceB').html(colFive[2].answer.toLowerCase());
               $('.multipleChoiceC').html(correctAnswer);
-              $('.multipleChoiceD').html(json.clues[0].answer.toLowerCase());
+              $('.multipleChoiceD').html(colFive[0].answer.toLowerCase());
             } else {
-              $('.multipleChoiceA').html(json.clues[4].answer.toLowerCase());
-              $('.multipleChoiceB').html(json.clues[0].answer.toLowerCase());
-              $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+              $('.multipleChoiceA').html(colFive[4].answer.toLowerCase());
+              $('.multipleChoiceB').html(colFive[0].answer.toLowerCase());
+              $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
               $('.multipleChoiceD').html(correctAnswer);
             }
-            console.log(categoryIds);
-        },
-        error: function() {
-          console.log("Error. JSON service is temporarily unavailable.");
         }
-      }))};
-function columnFive1000Question() {($.ajax({
-      method: "GET",
-      url: "http://www.jservice.io/api/category?id="+categoryIds[4],
-
-      success: function(json) {
-          console.log(json);
+function columnFive1000Question() {
           $("section")
             .removeClass("hidden")
-            .html(json.clues[4].question)
+            .html(colFive[4].question)
           $("table").addClass("dissapear");
-          // responsiveVoice.speak(json.clues[4].question.toString());
-          correctAnswer = json.clues[4].answer.toLowerCase();
-          answerWorth = json.clues[4].value;
+          // responsiveVoice.speak(colFive[4].question.toString());
+          correctAnswer = colFive[4].answer.toLowerCase();
+          answerWorth = colFive[4].value;
           $("article").removeClass("hidden");
           if (Math.random() >= .75) {
             $('.multipleChoiceA').html(correctAnswer);
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[1].answer.toLowerCase());
+            $('.multipleChoiceB').html(colFive[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colFive[1].answer.toLowerCase());
           } else if (Math.random() >= .5) {
-            $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
+            $('.multipleChoiceA').html(colFive[1].answer.toLowerCase());
             $('.multipleChoiceB').html(correctAnswer);
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
+            $('.multipleChoiceD').html(colFive[3].answer.toLowerCase());
           } else if (Math.random() >= .25) {
-            $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colFive[1].answer.toLowerCase());
+            $('.multipleChoiceB').html(colFive[2].answer.toLowerCase());
             $('.multipleChoiceC').html(correctAnswer);
-            $('.multipleChoiceD').html(json.clues[3].answer.toLowerCase());
+            $('.multipleChoiceD').html(colFive[3].answer.toLowerCase());
           } else {
-            $('.multipleChoiceA').html(json.clues[1].answer.toLowerCase());
-            $('.multipleChoiceB').html(json.clues[3].answer.toLowerCase());
-            $('.multipleChoiceC').html(json.clues[2].answer.toLowerCase());
+            $('.multipleChoiceA').html(colFive[1].answer.toLowerCase());
+            $('.multipleChoiceB').html(colFive[3].answer.toLowerCase());
+            $('.multipleChoiceC').html(colFive[2].answer.toLowerCase());
             $('.multipleChoiceD').html(correctAnswer);
           }
-          console.log(categoryIds);
-      },
-      error: function() {
-        console.log("Error. JSON service is temporarily unavailable.");
       }
-    }))};
 
 //Enable/disable players to enter and submit answers
 function enablePlayerSubmits() {
@@ -1393,10 +1146,10 @@ $("form").on('submit', function(e) {
 
 //Logic for winning
 function checkWinner() {
-    if (parseInt($("#playerOneScore").html()) >= 2000) {
+    if (parseInt($("#playerOneScore").html()) >= 1000) {
     alert("Congrats, you win! Refresh the page to play again");
     console.log("yo");
-  } else if (parseInt($("#playerTwoScore").html()) >= 2000) {
+  } else if (parseInt($("#playerTwoScore").html()) >= 1000) {
     alert("You lose. Refresh the page to play again.");
     console.log("comp wins");
   } else {
