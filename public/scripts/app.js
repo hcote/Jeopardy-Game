@@ -30,35 +30,6 @@ var randomCategories = [];
 var categoryIds = [];
 var numTimesRandomized = 1
 
-// LEFT OFF HERE: need to make sure line 127 in this file is copied and pasted
-// to every function column x; and need to find a way to fill in dummy
-// multiple choice answers. started with the if else if math.random function
-// below here
-// var multipleChoiceMath = function() {
-//   if (Math.random() >= .75) {
-//     $('.multipleChoiceA').html(correctAnswer);
-//     $('.multipleChoiceB').html("hey");
-//     $('.multipleChoiceC').html("hey");
-//     $('.multipleChoiceD').html("hey");
-//   } else if (Math.random() >= .5) {
-//     $('.multipleChoiceA').html("hey");
-//     $('.multipleChoiceB').html(correctAnswer);
-//     $('.multipleChoiceC').html("hey");
-//     $('.multipleChoiceD').html("hey");
-//   } else if (Math.random() >= .25) {
-//     $('.multipleChoiceA').html("hey");
-//     $('.multipleChoiceB').html("hey");
-//     $('.multipleChoiceC').html(correctAnswer);
-//     $('.multipleChoiceD').html("hey");
-//   } else {
-//     $('.multipleChoiceA').html("hey");
-//     $('.multipleChoiceB').html("hey");
-//     $('.multipleChoiceC').html("hey");
-//     $('.multipleChoiceD').html(correctAnswer);
-//   }
-// }
-
-
 //Setting difficulty
 $("#difficultyLevel").on('click', function() {
   difficultyLevel = prompt("Enter a number between 1 and 10. 1 is the easiest, 10 is the hardest");
@@ -68,7 +39,7 @@ $("#difficultyLevel").on('click', function() {
 //Randomize category for each column after button is clicked
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "http://localhost:3000/api/questions/1",
+  url: "https://stormy-wildwood-24270.herokuapp.com/api/questions/1",
 
   success: function(json) {
     colOne = json.clues;
@@ -83,7 +54,7 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "http://localhost:3000/api/questions/2",
+  url: "https://stormy-wildwood-24270.herokuapp.com/api/questions/2",
 
   success: function(json) {
     colTwo = json.clues;
@@ -95,7 +66,7 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "http://localhost:3000/api/questions/3",
+  url: "https://stormy-wildwood-24270.herokuapp.com/api/questions/3",
 
   success: function(json) {
     colThree = json.clues
@@ -107,7 +78,7 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "http://localhost:3000/api/questions/4",
+  url: "https://stormy-wildwood-24270.herokuapp.com/api/questions/4",
 
   success: function(json) {
     colFour = json.clues;
@@ -119,7 +90,7 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "http://localhost:3000/api/questions/5",
+  url: "https://stormy-wildwood-24270.herokuapp.com/api/questions/5",
 
   success: function(json) {
     colFive = json.clues;
