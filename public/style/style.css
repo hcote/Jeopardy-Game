@@ -13,11 +13,11 @@ header {
 }
 
 .flexing {
-  display: flex;
-  flex-direction: row;
-  width: 60%;
-  margin: auto;
-  margin-right: 27em;
+    display: flex;
+    flex-direction: row;
+    width: 51%;
+    margin: auto;
+    margin-right: 37em;
 }
 
 .mc {
