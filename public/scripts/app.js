@@ -60,8 +60,8 @@ $("#randomizeCats").on('click', function() {($.ajax({
     colTwo = json.clues;
     $(".CategoryTwo").html(json.title.toString());
   },
-  error: function() {
-    console.log("Category not assigned");
+  error: function(err) {
+    console.log(err);
   }
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
