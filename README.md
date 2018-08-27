@@ -1,5 +1,8 @@
 <img src="https://user-images.githubusercontent.com/34493689/40591432-20e94346-61c6-11e8-98b2-556f8146b115.png" alt="drawing" width="800px" />
 
+## Hosted
+https://lets-play-jeopardy.herokuapp.com/
+
 ## NOTE
 * The jeopardy API request is http, not https, and therefore cannot be hosted on github or heroku
 * To see working app, type the following commands in your terminal:
