@@ -1,115 +1,89 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
-    <!-- jQuery CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/scripts/app.js" charset="utf-8"></script>
-  </head>
-
+<html>
+      <head>
+            <meta charset="utf-8">
+            <title>Jeopardy</title>
+            <link rel="stylesheet" href="style.css">
+            <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+            <script src="jquery.js" charset="utf-8"></script>
+            <script src="jquery-3.3.1.min.js" charset="utf-8"></script>
+            <script src="app.js" charset="utf-8"></script>
+            <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+      </head>
   <body>
-    <header class="App-header">
+        <header>
 
-      <div>
-        <h1 class="crypto_bulls">Crypto Bull</h1>
-        <img src="bitcoin.png" alt="" class="logo">
-      </div>
-      <div class="navigationDiv">
-        <ul>
-            <li><a class="navLink cTab" href='/'>&nbsp;Home </a></li><span class="pipe">|</span>
-          <% if (!user) { %>
-            <li><a class="navLink" href='/portfolio'>&nbsp;Portfolio </a></li><span class="pipe">|</span>
-            <li><a class="navLink" href='/favorites'>&nbsp;Favorites </a></li><span class="pipe">|</span>
-          <%  } else { %>
-            <li><a class="navLink" href='/portfolio/<%= user._id.toString() %>'>&nbsp;Portfolio </a></li><span class="pipe">|</span>
-            <li><a class="navLink" href='/favorites/<%= user._id.toString() %>'>&nbsp;Favorites </a></li><span class="pipe">|</span>
-          <%  } %>
-            <li><a class="navLink" href='/news'>&nbsp;News </a></li><span class="pipe">|</span>
-          <% if (user == undefined) { %>
-            <li><a class="navLink" href='/signup'>&nbsp;Sign Up </a></li><span class="pipe">|</span>
-            <li><a class="navLink" href='/login'>&nbsp;Log In</a></li>
-          <%  } else { %>
-            <li><a class="navLink" href='/user/<%= user._id.toString() %>'>&nbsp;Profile </a></li><span class="pipe">|</span>
-            <li><a class="navLink" href='/logout'>&nbsp;Logout </a></li>
-          <%  } %>
-        </ul>
-      </div>
-    </header>
-    <section class="body">
-      <p class="toggle">Toggle (% Change): <span class="oneday gray">1 Day </span><span> | </span><span class="sevenday"> 7 Days</span></p>
-      <table cellspacing="0">
-        <tbody class="tbl_header">
-          <tr class="table_head">
-            <th class="tableHeader">Rank</th>
-            <th class="tableHeader">Name</th>
-            <th class="tableHeader">Symbol</th>
-            <th class="tableHeader">Price USD</th>
-            <th class="tableHeader">Price BTC</th>
-            <th class="tableHeader">24h Volume</th>
-            <th class="tableHeader">Market Cap</th>
-            <th class="tableHeader 1day">% Change 1d</th>
-            <th class="tableHeader 7day hide">% Change 7d</th>
-            <th class="tableHeader">Portfolio</th>
-            <th class="tableHeader">Favorite</th>
-          </tr>
-          <% for (let coin of coins) { %>
-            <tr class="table-row">
-              <td><%= coin.rank %> </td>
-              <td><%= coin.name %> </td>
-              <td><%= coin.symbol %> </td>
-              <td>$<%= coin.price_usd %> </td>
-              <td><%= coin.price_btc %> </td>
-              <td></td>
-            <% if (coin.market_cap_usd === null) { %>
-              <td>$0</td>
-            <%  } else { %>
-              <td>$<%= parseFloat(coin.market_cap_usd).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> </td>
-            <%  } %>
-              <td class="1d"><%= coin.percent_change_24h %>%</td>
-              <td class="7d hide"><%= coin.percent_change_7d %>%</td>
-              <td>
-                <form method='POST' action='/addToPortfolio' class="flexform">
-                  <input type='number' step="0.00001" name='qty' class="portfolioInput" autocomplete="off"></input>
-                  <% if (!user) { %>
-                    <input type='button' class='notUser' value='Add' disabled></input>
-                  <%  } else { %>
-                    <input type='submit' class='btn submit' value='Add'></input>
-                  <%  }  %>
-                  <input type='hidden' name='symbol' value='<%= coin.symbol %>'></input>
-                </form>
-              </td>
-              <td>
-                <form method='POST' action='/addToFavorites'>
-                <% if (!user) { %>
-                  <input type='button' value='☆' class="notUser2" disabled></input>
-                <%  } else { %>
-                  <input type='submit' value='☆' class="star"></input>
-                <%  }  %>
-                  <input type='hidden' name='symbol' value='<%= coin.symbol %>'></input>
-                </form>
-              </td>
-            </tr>
-          <%  } %>
-        </tbody>
-      </table>
-    </section>
-    <footer>
-      <br>
-      <div class="social"> <span class="contactme">Contact Me</span>
-        <br>
-        <a href="https://www.linkedin.com/in/huntercote/" target="_blank"><i class="fab fa-linkedin" style="font-size:36px; color: white"></i></a>
-        <a href="https://github.com/hcote" target="_blank"><i class="fab fa-github" style="font-size:36px; color: white"></i></a>
-        <a href="mailto:hcote12@gmail.com" target="_blank"><i class="fa fab fa-envelope" style="font-size:36px; color: white"></i></a>
-        <br>
-        <br>
-        <span class="copyright">&#169; Hunter Cote 2018</span>
-      </div>
-      <br>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.js" charset="utf-8"></script>
+        </header>
+        <section class="dailydoublehidden"></section>
+        <section class="hidden"></section>
+        <table>
+              <tr id="tableHead">
+                    <th class="CategoryOne">Category</th>
+                    <th class="CategoryTwo">Category</th>
+                    <th class="CategoryThree">Category</th>
+                    <th class="CategoryFour">Category</th>
+                    <th class="CategoryFive">Category</th>
+              </tr>
+              <tr>
+                    <td class="box columnone200">$100</td>
+                    <td class="box columntwo200">$100</td>
+                    <td class="box columnthree200">$100</td>
+                    <td class="box columnfour200">$100</td>
+                    <td class="box columnfive200">$100</td>
+              </tr>
+              <tr>
+                    <td class="box columnone400">$200</td>
+                    <td class="box columntwo400">$200</td>
+                    <td class="box columnthree400">$200</td>
+                    <td class="box columnfour400">$200</td>
+                    <td class="box columnfive400">$200</td>
+              </tr>
+              <tr>
+                    <td class="box columnone600">$300</td>
+                    <td class="box columntwo600">$300</td>
+                    <td class="box columnthree600">$300</td>
+                    <td class="box columnfour600">$300</td>
+                    <td class="box columnfive600">$300</td>
+              </tr>
+              <tr>
+                    <td class="box columnone800">$400</td>
+                    <td class="box columntwo800">$400</td>
+                    <td class="box columnthree800">$400</td>
+                    <td class="box columnfour800">$400</td>
+                    <td class="box columnfive800">$400</td>
+              </tr>
+              <tr>
+                    <td class="box columnone1000">$500</td>
+                    <td class="box columntwo1000">$500</td>
+                    <td class="box columnthree1000">$500</td>
+                    <td class="box columnfour1000">$500</td>
+                    <td class="box columnfive1000">$500</td>
+              </tr>
+        </table>
+
+        <div class="flexbox">
+              <div class="scoreBox">
+                    <div class="playerScore"><h5 id="playerOneScore">000</h5></div>
+                    <form id="userOneForm" action="index.html" method="post">
+                          <input type="text" name="answer" class="inputText1" value="" autocomplete="off" disabled>
+                          <input id="playerSubmit" class="submit" type="submit" name="submit" value="Submit" disabled>
+                    </form>
+                    <div class="playerNameDiv"><h4 id="playerOneName">Player 1</h4></div>
+              </div>
+              <button id="randomizeCats" type="button" name="button">Randomize Categories!</button> <br>
+              <button id="changeName"type="button" name="button">Click To Set or Change Your Name</button>
+              <button id="difficultyLevel"type="button" name="button">Set Computer Skill Level</button>
+              <button id="timer"type="button" name="button">How Many Seconds Would You Like Per Question?</button>
+              <div class="scoreBox">
+                    <div class="playerScore"><h5 id="playerTwoScore">000</h5></div>
+                    <form id="userTwoForm" action="index.html" method="post">
+                          <input type="text" name="answer" class="inputText2" value="" autocomplete="off" disabled>
+                          <input id="computerSubmit" class="submit" type="submit" name="submit" value="Submit" disabled>
+                    </form>
+                    <div class="playerNameDiv"><h4 id="playerTwoName">Computer</h4></div>
+              </div>
+        </div>
   </body>
 </html>
