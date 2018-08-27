@@ -39,7 +39,7 @@ $("#difficultyLevel").on('click', function() {
 //Randomize category for each column after button is clicked
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "https://stormy-wildwood-24270.herokuapp.com/api/questions/1",
+  url: "https://lets-play-jeopardy.herokuapp.com/api/questions/1",
 
   success: function(json) {
     colOne = json.clues;
@@ -54,7 +54,7 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "https://stormy-wildwood-24270.herokuapp.com/api/questions/2",
+  url: "https://lets-play-jeopardy.herokuapp.com/api/questions/2",
 
   success: function(json) {
     colTwo = json.clues;
@@ -66,7 +66,7 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "https://stormy-wildwood-24270.herokuapp.com/api/questions/3",
+  url: "https://lets-play-jeopardy.herokuapp.com/api/questions/3",
 
   success: function(json) {
     colThree = json.clues
@@ -78,7 +78,7 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "https://stormy-wildwood-24270.herokuapp.com/api/questions/4",
+  url: "https://lets-play-jeopardy.herokuapp.com/api/questions/4",
 
   success: function(json) {
     colFour = json.clues;
@@ -90,7 +90,7 @@ $("#randomizeCats").on('click', function() {($.ajax({
 }))});
 $("#randomizeCats").on('click', function() {($.ajax({
   method: "GET",
-  url: "https://stormy-wildwood-24270.herokuapp.com/api/questions/5",
+  url: "https://lets-play-jeopardy.herokuapp.com/api/questions/5",
 
   success: function(json) {
     colFive = json.clues;
