@@ -1,14 +1,7 @@
 <img src="https://user-images.githubusercontent.com/34493689/40591432-20e94346-61c6-11e8-98b2-556f8146b115.png" alt="drawing" width="800px" />
 
-## Hosted
+## Live URL
 https://lets-play-jeopardy.herokuapp.com/
-
-## NOTE
-* The jeopardy API request is http, not https, and therefore cannot be hosted on github or heroku
-* To see working app, type the following commands in your terminal:
-	1. git clone https://github.com/hcote/Jeopardy-Game.git
-	2. cd Jeopardy-Game
-	2. open index.html
 
 # Technologies Used:
 * API / AJAX (Jeopardy and Responsive Voice)
@@ -32,8 +25,6 @@ https://lets-play-jeopardy.herokuapp.com/
  9. There is no penalty for not answering a question.
  10. The first contestant to 2,000 points wins!
  
- <a href="https://imgflip.com/gif/2e777e"><img src="https://i.imgflip.com/2e777e.gif" title="made at imgflip.com" width="500px"/></a>
-
 # Future Plans
 	1. Include a countdown or animation dictating how much time is left
 	2. Fix existing bugs
