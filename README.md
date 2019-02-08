@@ -1,5 +1,3 @@
-<img src="https://user-images.githubusercontent.com/34493689/40591432-20e94346-61c6-11e8-98b2-556f8146b115.png" alt="drawing" width="800px" />
-
 ## Live URL
 https://lets-play-jeopardy.herokuapp.com/
 
@@ -23,10 +21,10 @@ https://lets-play-jeopardy.herokuapp.com/
  7. If you are correct, that question's value is added to your current score
  8. If you are wrong, that question's value is deducted from your current score
  9. There is no penalty for not answering a question.
- 10. The first contestant to 2,000 points wins!
+ 10. The first contestant to 1,000 points wins!
  
 # Future Plans
-	1. Include a countdown or animation dictating how much time is left
-	2. Fix existing bugs
+1. Include a countdown or animation dictating how much time is left
+2. Fix existing bugs
 
-<img src="https://user-images.githubusercontent.com/34493689/40591435-26c3924e-61c6-11e8-9ab8-a07f6df76b5c.png" alt="drawing" width="800px" />
+<img src="https://user-images.githubusercontent.com/34493689/40591432-20e94346-61c6-11e8-98b2-556f8146b115.png" alt="drawing" width="800px" />
