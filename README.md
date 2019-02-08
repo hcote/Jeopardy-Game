@@ -1,17 +1,17 @@
 ## Live URL
 https://lets-play-jeopardy.herokuapp.com/
 
-# Technologies Used:
+## Technologies Used:
 * API / AJAX (Jeopardy and Responsive Voice)
 * HTML, CSS, JavaScript, jQuery
 
-# Approach
+## Approach
 * Wanted to focus more on JavaScript than HTML and CSS
 * Incorporate as much of unit 1 knowledge as possible, especially API's
 * Wanted to do a trivia game, and luckily Jeopardy had an API
 * The goals were to replicate the actual game as close as possible, prioritize ease of use, and keep it simple.
 
-# Instructions
+## Instructions
  1. Set your name (if you choose)
  2. Click the button below to randomize the categories
  3. Click any question box you choose (categories are at the top)
@@ -23,7 +23,7 @@ https://lets-play-jeopardy.herokuapp.com/
  9. There is no penalty for not answering a question.
  10. The first contestant to 1,000 points wins!
  
-# Future Plans
+## Future Plans
 1. Include a countdown or animation dictating how much time is left
 2. Fix existing bugs
 
